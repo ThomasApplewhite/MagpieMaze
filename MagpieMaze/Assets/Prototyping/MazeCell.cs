@@ -10,7 +10,7 @@ public class MazeCell : MonoBehaviour
     public GameObject WestWall;
 
     //This cell's coordinates in its maze
-    public Vector2 Coordinate { get; private set; }
+    public Vector2Int Coordinate { get; private set; }
 
     public static void ConnectNorthSouth(MazeCell North, MazeCell South)
     {
@@ -24,7 +24,7 @@ public class MazeCell : MonoBehaviour
         Destroy(West.EastWall);
     }
 
-    public void Initialize(Vector2 coord)
+    public void Initialize(Vector2Int coord)
     {
         this.Coordinate = coord;
     }
@@ -36,19 +36,19 @@ public class MazeCell : MonoBehaviour
         //this.Coordinate is second, so all of these checks will judge relative to this
         Vector2 compositeCoord = otherCell.Coordinate - this.Coordinate;
 
-        if(compositeCoord.x == 1f)
+        if(compositeCoord.x == 1)
         {
             MazeCell.ConnectEastWest(otherCell, this);
         }
-        else if(compositeCoord.x == -1f)
+        else if(compositeCoord.x == -1)
         {
             MazeCell.ConnectEastWest(this, otherCell);
         }
-        else if(compositeCoord.y == 1f)
+        else if(compositeCoord.y == 1)
         {
             MazeCell.ConnectNorthSouth(otherCell, this);
         }
-        else if(compositeCoord.y == -1f)
+        else if(compositeCoord.y == -1)
         {
             MazeCell.ConnectNorthSouth(this, otherCell);
         }
