@@ -24,7 +24,7 @@ public class MazeCell : MonoBehaviour
         Destroy(West.EastWall);
     }
 
-    public void Initialize(Vector2Int coord)
+    public virtual void Initialize(Vector2Int coord)
     {
         this.Coordinate = coord;
     }

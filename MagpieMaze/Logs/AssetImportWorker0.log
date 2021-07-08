@@ -13,11 +13,11 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-35667
+36425
 Successfully changed project path to: /home/main/Unity/MagpieMaze/MagpieMaze/MagpieMaze
 /home/main/Unity/MagpieMaze/MagpieMaze/MagpieMaze
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 31.97 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 33.29 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.11f1 (99c7afb366b3)
 [Subsystems] Discovering subsystems at path /home/main/Unity/2020.3.11f1/Editor/Data/Resources/UnitySubsystems
@@ -36,568 +36,740 @@ XT_provoking_vertex GL_EXT_rescale_normal GL_EXT_secondary_color GL_EXT_separate
 nc_object GL_EXT_import_sync_object GL_NV_robustness_video_memory_purge GL_IBM_rasterpos_clip GL_IBM_texture_mirrored_repeat GL_KHR_context_flush_control GL_KHR_debug GL_EXT_memory_object GL_EXT_memory_object_fd GL_KHR_parallel_shader_compile GL_KHR_no_error GL_KHR_robust_buffer_access_behavior GL_KHR_robustness GL_EXT_semaphore GL_EXT_semaphore_fd GL_NV_timeline_semaphore GL_KHR_shader_subgroup GL_KTX_buffer_region GL_NV_alpha_to_coverage_dither_control GL_NV_bindless_multi_draw_indirect GL_NV_bindless_multi_draw_indirect_count GL_NV_bindless_texture GL_NV_blend_equation_advanced GL_NV_blend_square GL_NV_command_list GL_NV_compute_program5 GL_NV_conditional_render GL_NV_copy_depth_to_color GL_NV_copy_image GL_NV_depth_buffer_float GL_NV_depth_clamp GL_NV_draw_texture GL_NV_draw_vulkan_image GL_NV_ES1_1_compatibility GL_NV_ES3_1_compatibility GL_NV_explicit_multisample GL_NV_feature_query GL_NV_fence GL_NV_float_buffer GL_NV_fog_distance GL_NV_fragment_program GL_NV_fragment_program_option GL_NV_fragment_pro
 gram2 GL_NV_framebuffer_multisample_coverage GL_NV_geometry_shader4 GL_NV_gpu_program4 GL_NV_internalformat_sample_query GL_NV_gpu_program4_1 GL_NV_gpu_program5 GL_NV_gpu_program5_mem_extended GL_NV_gpu_program_fp64 GL_NV_gpu_shader5 GL_NV_half_float GL_NV_light_max_exponent GL_NV_multisample_coverage GL_NV_multisample_filter_hint GL_NV_occlusion_query GL_NV_packed_depth_stencil GL_NV_parameter_buffer_object GL_NV_parameter_buffer_object2 GL_NV_path_rendering GL_NV_pixel_data_range GL_NV_point_sprite GL_NV_primitive_restart GL_NV_query_resource GL_NV_query_resource_tag GL_NV_register_combiners GL_NV_register_combiners2 GL_NV_shader_atomic_counters GL_NV_shader_atomic_float GL_NV_shader_buffer_load GL_NV_shader_storage_buffer_object GL_NV_shader_subgroup_partitioned GL_NV_texgen_reflection GL_NV_texture_barrier GL_NV_texture_compression_vtc GL_NV_texture_env_combine4 GL_NV_texture_multisample GL_NV_texture_rectangle GL_NV_texture_rectangle_compressed GL_NV_texture_shader GL_NV_texture_shader2 GL_NV_texture_sh
 ader3 GL_NV_transform_feedback GL_NV_transform_feedback2 GL_NV_uniform_buffer_unified_memory GL_NV_vdpau_interop GL_NV_vdpau_interop2 GL_NV_vertex_array_range GL_NV_vertex_array_range2 GL_NV_vertex_attrib_integer_64bit GL_NV_vertex_buffer_unified_memory GL_NV_vertex_program GL_NV_vertex_program1_1 GL_NV_vertex_program2 GL_NV_vertex_program2_option GL_NV_vertex_program3 GL_NVX_conditional_render GL_NV_gpu_multicast GL_NVX_progress_fence GL_NVX_gpu_memory_info GL_NVX_nvenc_interop GL_NV_shader_thread_group GL_NV_shader_thread_shuffle GL_KHR_blend_equation_advanced GL_OVR_multiview GL_OVR_multiview2 GL_SGIS_generate_mipmap GL_SGIS_texture_lod GL_SGIX_depth_texture GL_SGIX_shadow GL_SUN_slice_accum
-OPENGL LOG: Creating OpenGL 4.5 graphics device ; Context level  <OpenGL 4.5> ; Context handle 95853592
+OPENGL LOG: Creating OpenGL 4.5 graphics device ; Context level  <OpenGL 4.5> ; Context handle -1446065176
 Initialize mono
 Mono path[0] = '/home/main/Unity/2020.3.11f1/Editor/Data/Managed'
 Mono path[1] = '/home/main/Unity/2020.3.11f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = '/home/main/Unity/2020.3.11f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56879
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56528
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /home/main/Unity/2020.3.11f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.001566 seconds.
+Registered in 0.001111 seconds.
 Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 31.41 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 33.02 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.853 seconds
+- Completed reload, in  0.892 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.002406 seconds.
+Registered in 0.002662 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 30.95 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 29.20 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.046 seconds
+- Completed reload, in  1.059 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
-Refreshing native plugins compatible for Editor in 0.47 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.42 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1686 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 70.3 MB.
+System memory in use before: 70.4 MB.
 System memory in use after: 70.4 MB.
 
 Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 2121.
-Total: 4.373146 ms (FindLiveObjects: 0.345090 ms CreateObjectMapping: 0.174030 ms MarkObjects: 3.590498 ms  DeleteObjects: 0.262107 ms)
+Total: 4.027108 ms (FindLiveObjects: 0.239800 ms CreateObjectMapping: 0.177901 ms MarkObjects: 3.354194 ms  DeleteObjects: 0.253704 ms)
 
 ========================================================================
 Received Import Request.
+  path: Assets/Prototyping/MazeCell.prefab
+  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9552bfa7af5657ccb7cd76392d581950') in 0.159429 seconds
+  Import took 0.163574 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.100655 seconds.
   path: Assets/Prototyping/MazeGenerator.cs
   artifactKey: Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeGenerator.cs using Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ee9a0a43accf78a691aef8b062a25fd') in 0.005164 seconds
-  Import took 0.009196 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002535 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0.37 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.980 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.35 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 70.5 MB.
-System memory in use after: 70.5 MB.
-
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2124.
-Total: 4.624009 ms (FindLiveObjects: 0.500433 ms CreateObjectMapping: 0.234506 ms MarkObjects: 3.772820 ms  DeleteObjects: 0.113841 ms)
+Start importing Assets/Prototyping/MazeGenerator.cs using Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b92fcc3c539bb192f5bd917b84fe0830') in 0.000633 seconds
+  Import took 0.003613 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 310.373292 seconds.
+  Time since last request: 0.001892 seconds.
   path: Assets/Prototyping/MazeGenerator.cs
   artifactKey: Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeGenerator.cs using Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '932393c7d4f5e094748b78d99814835f') in 0.004271 seconds
-  Import took 0.008201 seconds .
+Start importing Assets/Prototyping/MazeGenerator.cs using Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b92fcc3c539bb192f5bd917b84fe0830') in 0.000534 seconds
+  Import took 0.002879 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.002285 seconds.
+Registered in 0.002437 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.35 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.923 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.36 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 71.9 MB.
+System memory in use after: 71.9 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2132.
+Total: 2.970709 ms (FindLiveObjects: 0.261779 ms CreateObjectMapping: 0.053538 ms MarkObjects: 2.549130 ms  DeleteObjects: 0.105262 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 9867.241301 seconds.
+  path: Assets/Prototyping/MazeGenerator.cs
+  artifactKey: Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeGenerator.cs using Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a902dc4043b3205dd6f8f1210b2016d9') in 0.003458 seconds
+  Import took 0.006740 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 244.269280 seconds.
+  path: Assets/Prototyping/MazeGenerator.cs
+  artifactKey: Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeGenerator.cs using Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a1e8a4945c1d953c3ae5a772bad5fac') in 0.000928 seconds
+  Import took 0.005508 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 39.578414 seconds.
+  path: Assets/Prototyping/MazeGenerator.cs
+  artifactKey: Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeGenerator.cs using Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3caa7b3f1987338152c91e0543bf884') in 0.000743 seconds
+  Import took 0.004074 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 58.438359 seconds.
+  path: Assets/Prototyping/MazeGenerator.cs
+  artifactKey: Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeGenerator.cs using Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08413ea8821bf5578ff7b3309d534970') in 0.000626 seconds
+  Import took 0.003884 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004121 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Refreshing native plugins compatible for Editor in 0.36 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.989 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.34 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 70.5 MB.
-System memory in use after: 70.5 MB.
-
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2127.
-Total: 3.074928 ms (FindLiveObjects: 0.274495 ms CreateObjectMapping: 0.052003 ms MarkObjects: 2.618299 ms  DeleteObjects: 0.128946 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002603 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0.67 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.991 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.48 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 70.5 MB.
-System memory in use after: 70.6 MB.
-
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2130.
-Total: 3.223184 ms (FindLiveObjects: 0.277914 ms CreateObjectMapping: 0.084510 ms MarkObjects: 2.758125 ms  DeleteObjects: 0.101401 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002422 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0.36 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.994 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.33 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 70.5 MB.
-System memory in use after: 70.6 MB.
-
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2133.
-Total: 3.802365 ms (FindLiveObjects: 0.275337 ms CreateObjectMapping: 0.080385 ms MarkObjects: 3.333272 ms  DeleteObjects: 0.111824 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002540 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0.37 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.038 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 70.5 MB.
-System memory in use after: 70.6 MB.
-
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2136.
-Total: 3.242342 ms (FindLiveObjects: 0.333952 ms CreateObjectMapping: 0.111581 ms MarkObjects: 2.653473 ms  DeleteObjects: 0.141350 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002451 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0.36 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.937 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.34 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 70.5 MB.
-System memory in use after: 70.6 MB.
-
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2139.
-Total: 3.869656 ms (FindLiveObjects: 0.255001 ms CreateObjectMapping: 0.088276 ms MarkObjects: 3.403651 ms  DeleteObjects: 0.111028 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002311 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0.37 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.048 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.35 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 70.6 MB.
-System memory in use after: 70.6 MB.
-
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2142.
-Total: 3.163691 ms (FindLiveObjects: 0.236725 ms CreateObjectMapping: 0.056254 ms MarkObjects: 2.773629 ms  DeleteObjects: 0.095942 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002429 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0.41 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.932 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 70.6 MB.
-System memory in use after: 70.6 MB.
-
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2145.
-Total: 4.045562 ms (FindLiveObjects: 0.373145 ms CreateObjectMapping: 0.220586 ms MarkObjects: 3.322046 ms  DeleteObjects: 0.127727 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 1321.960104 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ca917deae25130e4cf366145638cfd4') in 0.100755 seconds
-  Import took 0.105384 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.152869 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '443a7cadd51f54f00f8dac1afe224fe3') in 0.007507 seconds
-  Import took 0.011027 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.447277 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6262cc845af5d9cf821917077391f90e') in 0.007264 seconds
-  Import took 0.010725 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.408982 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd3d3e8be45967743283f8bb0ae100b3') in 0.008886 seconds
-  Import took 0.013388 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.017797 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27f07622758023f03151ed3dd889037d') in 0.008969 seconds
-  Import took 0.013451 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.635836 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '585848b92bd56dabc0ffab10e1d33e8a') in 0.007645 seconds
-  Import took 0.011830 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 12.367198 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f49720ce0cf5495a7b9e2cb0e0611835') in 0.007238 seconds
-  Import took 0.011368 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.830254 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35c8b71d01b371934f1b31258c3b9516') in 0.010203 seconds
-  Import took 0.014712 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.836597 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86cb759960d3741b004c61ea49d40b6d') in 0.006845 seconds
-  Import took 0.010654 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.470874 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17603fd145ed406538007e6171b9022b') in 0.007964 seconds
-  Import took 0.011983 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.837030 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee70fa49deb45c9a4f0bf7c2f4b3f1e9') in 0.009001 seconds
-  Import took 0.012967 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.710253 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4d30b239f3ffa09612a974d2261eb87') in 0.007388 seconds
-  Import took 0.012420 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.436865 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb03704c028a0add13e7fcf2c2097a60') in 0.005875 seconds
-  Import took 0.009884 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.444321 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf98b414fc68f9f6631eadf6739b260c') in 0.008797 seconds
-  Import took 0.013327 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.051275 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c9d8fc6055192e60da0081d67f9ced9') in 0.006267 seconds
-  Import took 0.010446 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.851277 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07e33ffec11eed62b84e191f4aa4559a') in 0.006703 seconds
-  Import took 0.010658 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.790320 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c447aab54554273e081a40332e7ab7fd') in 0.009439 seconds
-  Import took 0.013277 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.425881 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad3f3c724b4d4e62b62f9b7e719e9297') in 0.007632 seconds
-  Import took 0.011113 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.077811 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '954d07320ab63f66d9b4ce2945ef1434') in 0.006676 seconds
-  Import took 0.010586 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.098303 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7bcca7847ac8b08cf96cd04dd9919d0') in 0.006076 seconds
-  Import took 0.009874 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.002526 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99a46cc1b874d1a9e8fa0099f7580755') in 0.006151 seconds
-  Import took 0.009753 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002586 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0.41 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.017 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.35 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 72.0 MB.
-System memory in use after: 72.0 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2156.
-Total: 3.298262 ms (FindLiveObjects: 0.313086 ms CreateObjectMapping: 0.072238 ms MarkObjects: 2.796964 ms  DeleteObjects: 0.114511 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002313 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.056 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.60 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 72.0 MB.
-System memory in use after: 72.0 MB.
-
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2159.
-Total: 3.608956 ms (FindLiveObjects: 0.336683 ms CreateObjectMapping: 0.141058 ms MarkObjects: 3.011354 ms  DeleteObjects: 0.118684 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002429 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0.40 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.973 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.44 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 72.0 MB.
-System memory in use after: 72.0 MB.
-
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2162.
-Total: 3.317036 ms (FindLiveObjects: 0.317431 ms CreateObjectMapping: 0.054289 ms MarkObjects: 2.840774 ms  DeleteObjects: 0.103467 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.003824 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0.45 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.977 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.35 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 72.0 MB.
-System memory in use after: 72.1 MB.
-
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2165.
-Total: 3.044827 ms (FindLiveObjects: 0.257311 ms CreateObjectMapping: 0.076181 ms MarkObjects: 2.565591 ms  DeleteObjects: 0.144523 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002533 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0.37 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
 - Completed reload, in  0.935 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.34 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.33 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 72.0 MB.
-System memory in use after: 72.1 MB.
+System memory in use before: 71.9 MB.
+System memory in use after: 71.9 MB.
 
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2168.
-Total: 3.422640 ms (FindLiveObjects: 0.236344 ms CreateObjectMapping: 0.071918 ms MarkObjects: 2.973714 ms  DeleteObjects: 0.138655 ms)
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2135.
+Total: 3.137751 ms (FindLiveObjects: 0.205241 ms CreateObjectMapping: 0.054366 ms MarkObjects: 2.775585 ms  DeleteObjects: 0.101378 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.356668 seconds.
+  path: Assets/Prototyping/MazeGenerator.cs
+  artifactKey: Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeGenerator.cs using Guid(481234afe0122b488ada9e77172339eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be17895ffdb542ce09e7caf6c74a3c3b') in 0.003739 seconds
+  Import took 0.007094 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.002383 seconds.
+Registered in 0.002355 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.46 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.950 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.60 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 71.9 MB.
+System memory in use after: 72.0 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2138.
+Total: 2.964525 ms (FindLiveObjects: 0.246156 ms CreateObjectMapping: 0.073665 ms MarkObjects: 2.541594 ms  DeleteObjects: 0.101992 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002585 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.35 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.995 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.40 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 71.9 MB.
+System memory in use after: 72.0 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2141.
+Total: 3.000741 ms (FindLiveObjects: 0.230005 ms CreateObjectMapping: 0.054808 ms MarkObjects: 2.609030 ms  DeleteObjects: 0.105786 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002353 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.35 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.969 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.33 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 71.9 MB.
+System memory in use after: 72.0 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2144.
+Total: 3.826100 ms (FindLiveObjects: 0.247327 ms CreateObjectMapping: 0.083581 ms MarkObjects: 3.377648 ms  DeleteObjects: 0.115745 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 389.719544 seconds.
+  path: Assets/Prototyping/MazeCell.prefab
+  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2367c388a98e7cdc26018b4d65b83052') in 0.054340 seconds
+  Import took 0.058002 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 195.328838 seconds.
+  path: Assets/Prototyping/MazeCell.prefab
+  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4fa68313f823fd8665cf69a9ba5f367') in 0.007601 seconds
+  Import took 0.011429 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 39.476890 seconds.
+  path: Assets/Prototyping/MazeCell.prefab
+  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0975b51029df430a2e3dd25edcfb694') in 0.007373 seconds
+  Import took 0.011928 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.263387 seconds.
+  path: Assets/Prototyping/MazeCell.prefab
+  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f934b431194778f466e3c4232782700') in 0.007863 seconds
+  Import took 0.012489 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.430916 seconds.
+  path: Assets/Prototyping/MazeCell.prefab
+  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '352030db2dc1c3ca39c0db07a503f5ae') in 0.007317 seconds
+  Import took 0.010987 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.540202 seconds.
+  path: Assets/Prototyping/MazeCell.prefab
+  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35ad5f0409af6535226e0089af46f611') in 0.006022 seconds
+  Import took 0.009800 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.408837 seconds.
+  path: Assets/Prototyping/MazeCell.prefab
+  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9c1fd9f132115834533f1b7f7a14143') in 0.010182 seconds
+  Import took 0.014250 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.283783 seconds.
+  path: Assets/Prototyping/MazeCell.prefab
+  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca20ebe3e1a85dc24bb5305f738b8916') in 0.006793 seconds
+  Import took 0.010831 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.159971 seconds.
+  path: Assets/Prototyping/MazeCell.prefab
+  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8176dd3147bb76629f74d6ebda8befb1') in 0.008512 seconds
+  Import took 0.013957 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.392661 seconds.
+  path: Assets/Prototyping/MazeCell.prefab
+  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c58da19a0735278b7ecbf3ca1da5ac3') in 0.006897 seconds
+  Import took 0.011434 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002590 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.35 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.934 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.33 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.0 MB.
+System memory in use after: 72.0 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2149.
+Total: 4.203728 ms (FindLiveObjects: 0.283495 ms CreateObjectMapping: 0.139064 ms MarkObjects: 3.641734 ms  DeleteObjects: 0.137784 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 215.707856 seconds.
+  path: Assets/Prototyping/DebugSpecialCell.prefab
+  artifactKey: Guid(ed445e9bb26e736f9b259f7bdeb182a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/DebugSpecialCell.prefab using Guid(ed445e9bb26e736f9b259f7bdeb182a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96eee6471ec93f68352d7791a2230dfe') in 0.061329 seconds
+  Import took 0.064904 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000983 seconds.
+  path: Assets/Prototyping/DebugSpecialCell.prefab
+  artifactKey: Guid(ed445e9bb26e736f9b259f7bdeb182a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/DebugSpecialCell.prefab using Guid(ed445e9bb26e736f9b259f7bdeb182a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96eee6471ec93f68352d7791a2230dfe') in 0.005409 seconds
+  Import took 0.008824 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 556.282772 seconds.
+  path: Assets/Prototyping/MazeCellReplacer.cs
+  artifactKey: Guid(2764e078412da9706ac73aade6863f23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCellReplacer.cs using Guid(2764e078412da9706ac73aade6863f23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ee056d390ca0dcddc80fa195ca907f3') in 0.002454 seconds
+  Import took 0.007879 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002805 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Refreshing native plugins compatible for Editor in 0.38 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.042 seconds
+- Completed reload, in  1.237 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.36 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.39 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 72.0 MB.
 System memory in use after: 72.1 MB.
 
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2171.
-Total: 2.994755 ms (FindLiveObjects: 0.263559 ms CreateObjectMapping: 0.068936 ms MarkObjects: 2.558433 ms  DeleteObjects: 0.102825 ms)
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2154.
+Total: 4.928361 ms (FindLiveObjects: 0.432755 ms CreateObjectMapping: 0.148798 ms MarkObjects: 4.207953 ms  DeleteObjects: 0.136554 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.002426 seconds.
+Registered in 0.004309 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.50 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.237 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.37 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.0 MB.
+System memory in use after: 72.1 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2157.
+Total: 5.789196 ms (FindLiveObjects: 0.305539 ms CreateObjectMapping: 0.094813 ms MarkObjects: 5.252306 ms  DeleteObjects: 0.134355 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 186.853423 seconds.
+  path: Assets/Prototyping/MazeCellReplacer.cs
+  artifactKey: Guid(2764e078412da9706ac73aade6863f23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCellReplacer.cs using Guid(2764e078412da9706ac73aade6863f23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f94963a22893f67f1d149bf391fbb459') in 0.004230 seconds
+  Import took 0.008435 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002606 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Refreshing native plugins compatible for Editor in 0.39 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.996 seconds
+- Completed reload, in  1.204 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.35 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.39 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 72.0 MB.
 System memory in use after: 72.1 MB.
 
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2174.
-Total: 4.621615 ms (FindLiveObjects: 0.435735 ms CreateObjectMapping: 0.203409 ms MarkObjects: 3.864034 ms  DeleteObjects: 0.116799 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 678.563846 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3d4434709ae32bb8f902f77a6066663') in 0.059069 seconds
-  Import took 0.064005 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.011023 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d4541e74a92b71159f936ed438bb7c0') in 0.007242 seconds
-  Import took 0.011922 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.237383 seconds.
-  path: Assets/Prototyping/MazeCell.prefab
-  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '338e714eb77bc4bc0181ce7901d1a575') in 0.009663 seconds
-  Import took 0.013903 seconds .
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2160.
+Total: 5.072728 ms (FindLiveObjects: 0.334588 ms CreateObjectMapping: 0.093876 ms MarkObjects: 4.470346 ms  DeleteObjects: 0.171475 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.002348 seconds.
+Registered in 0.004011 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0.37 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.42 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.955 seconds
+- Completed reload, in  1.163 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.34 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.63 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1681 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.0 MB.
+System memory in use after: 72.1 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2163.
+Total: 4.492600 ms (FindLiveObjects: 0.404017 ms CreateObjectMapping: 0.117035 ms MarkObjects: 3.781205 ms  DeleteObjects: 0.188431 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002811 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.40 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.148 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.40 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.0 MB.
+System memory in use after: 72.1 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2166.
+Total: 5.343510 ms (FindLiveObjects: 0.297326 ms CreateObjectMapping: 0.191758 ms MarkObjects: 4.712904 ms  DeleteObjects: 0.128860 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003157 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.47 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.282 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.47 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.0 MB.
+System memory in use after: 72.1 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2169.
+Total: 4.244064 ms (FindLiveObjects: 0.407767 ms CreateObjectMapping: 0.181233 ms MarkObjects: 3.533555 ms  DeleteObjects: 0.119783 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002558 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.38 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.243 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.38 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 72.1 MB.
 System memory in use after: 72.1 MB.
 
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2178.
-Total: 7.448120 ms (FindLiveObjects: 0.378394 ms CreateObjectMapping: 0.194752 ms MarkObjects: 6.749035 ms  DeleteObjects: 0.123671 ms)
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2172.
+Total: 4.845075 ms (FindLiveObjects: 0.285129 ms CreateObjectMapping: 0.180254 ms MarkObjects: 4.269000 ms  DeleteObjects: 0.108874 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002597 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.46 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.157 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.42 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.1 MB.
+System memory in use after: 72.1 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2175.
+Total: 4.655936 ms (FindLiveObjects: 0.295371 ms CreateObjectMapping: 0.113317 ms MarkObjects: 4.116907 ms  DeleteObjects: 0.128508 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002629 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.36 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.128 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.41 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.1 MB.
+System memory in use after: 72.1 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2178.
+Total: 3.842140 ms (FindLiveObjects: 0.223477 ms CreateObjectMapping: 0.081617 ms MarkObjects: 3.415049 ms  DeleteObjects: 0.119915 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002536 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.149 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.36 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.1 MB.
+System memory in use after: 72.1 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2181.
+Total: 3.800222 ms (FindLiveObjects: 0.289500 ms CreateObjectMapping: 0.073987 ms MarkObjects: 3.321439 ms  DeleteObjects: 0.113500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1054.001250 seconds.
+  path: Assets/Prototyping/MazeCellReplacer.cs
+  artifactKey: Guid(2764e078412da9706ac73aade6863f23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCellReplacer.cs using Guid(2764e078412da9706ac73aade6863f23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bea667fb19630c371da3c03de9eac0b7') in 0.003731 seconds
+  Import took 0.007480 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032780 seconds.
+  path: Assets/Prototyping/MazeCellReplacer.cs
+  artifactKey: Guid(2764e078412da9706ac73aade6863f23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCellReplacer.cs using Guid(2764e078412da9706ac73aade6863f23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bea667fb19630c371da3c03de9eac0b7') in 0.000750 seconds
+  Import took 0.004106 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 17.665922 seconds.
+  path: Assets/Prototyping/DebugSpecialCell.prefab
+  artifactKey: Guid(ed445e9bb26e736f9b259f7bdeb182a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/DebugSpecialCell.prefab using Guid(ed445e9bb26e736f9b259f7bdeb182a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cbab6200794fb75b1f1cdb617f7d6aa') in 0.131851 seconds
+  Import took 0.135887 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002462 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.47 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.199 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.64 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.1 MB.
+System memory in use after: 72.1 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2185.
+Total: 4.375622 ms (FindLiveObjects: 0.390208 ms CreateObjectMapping: 0.090622 ms MarkObjects: 3.769311 ms  DeleteObjects: 0.114235 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004048 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.74 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.200 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.45 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.1 MB.
+System memory in use after: 72.2 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2188.
+Total: 3.489575 ms (FindLiveObjects: 0.218442 ms CreateObjectMapping: 0.059979 ms MarkObjects: 3.087225 ms  DeleteObjects: 0.122388 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004134 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.41 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.143 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.36 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.1 MB.
+System memory in use after: 72.2 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2191.
+Total: 3.291322 ms (FindLiveObjects: 0.275705 ms CreateObjectMapping: 0.061334 ms MarkObjects: 2.831164 ms  DeleteObjects: 0.121996 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003995 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.50 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.212 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.38 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.1 MB.
+System memory in use after: 72.2 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2194.
+Total: 4.296917 ms (FindLiveObjects: 0.341506 ms CreateObjectMapping: 0.084387 ms MarkObjects: 3.751148 ms  DeleteObjects: 0.118115 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 136.857449 seconds.
+  path: Assets/Prototyping/MazeCell.prefab
+  artifactKey: Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/MazeCell.prefab using Guid(749b26e20b5ee7679b32ec872a53c88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f945b4bf11caded405516255dee2789') in 0.079804 seconds
+  Import took 0.084486 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.471249 seconds.
+  path: Assets/Prototyping/Green_Debug.mat
+  artifactKey: Guid(a90b64b6fb1669a78a9ef06960e956a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/Green_Debug.mat using Guid(a90b64b6fb1669a78a9ef06960e956a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92202d56d6a03507176b1d5d9a030c28') in 0.022644 seconds
+  Import took 0.026217 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.488827 seconds.
+  path: Assets/Prototyping/DebugSpecialCell.prefab
+  artifactKey: Guid(ed445e9bb26e736f9b259f7bdeb182a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/DebugSpecialCell.prefab using Guid(ed445e9bb26e736f9b259f7bdeb182a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf8ec9dcca8c9993873a761fba8bab4e') in 0.033613 seconds
+  Import took 0.038004 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.317955 seconds.
+  path: Assets/Prototyping/Green_Debug.mat
+  artifactKey: Guid(a90b64b6fb1669a78a9ef06960e956a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/Green_Debug.mat using Guid(a90b64b6fb1669a78a9ef06960e956a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e8517108fc0cd78a74c6abd1f752555') in 0.007935 seconds
+  Import took 0.012974 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.012428 seconds.
+  path: Assets/Prototyping/Green_Debug.mat
+  artifactKey: Guid(a90b64b6fb1669a78a9ef06960e956a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prototyping/Green_Debug.mat using Guid(a90b64b6fb1669a78a9ef06960e956a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e8517108fc0cd78a74c6abd1f752555') in 0.008028 seconds
+  Import took 0.011438 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002568 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.185 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.40 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.4 MB.
+System memory in use after: 72.4 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2231.
+Total: 4.839643 ms (FindLiveObjects: 0.516562 ms CreateObjectMapping: 0.209077 ms MarkObjects: 3.978511 ms  DeleteObjects: 0.133655 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003009 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.38 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.155 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.4 MB.
+System memory in use after: 72.4 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2234.
+Total: 3.183331 ms (FindLiveObjects: 0.236914 ms CreateObjectMapping: 0.066316 ms MarkObjects: 2.761385 ms  DeleteObjects: 0.117266 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003175 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.36 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.151 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.35 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.4 MB.
+System memory in use after: 72.4 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2237.
+Total: 3.355484 ms (FindLiveObjects: 0.234942 ms CreateObjectMapping: 0.060804 ms MarkObjects: 2.937084 ms  DeleteObjects: 0.121073 ms)
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
