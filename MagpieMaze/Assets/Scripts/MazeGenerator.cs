@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MazeGenerator : MonoBehaviour
 {
@@ -23,6 +24,12 @@ public class MazeGenerator : MonoBehaviour
     [Tooltip("The prefab of a Replacer to just replace some things")]
     public GameObject ReplacerCell;
 
+    [Tooltip("The prefab of the floor")]
+    public GameObject MazeFloor;
+
+    //The NavMesh of the floor
+    private NavMeshSurface nav;
+
     //The Array of MazeCells that make up the maze
     private MazeCell[,] Maze;
 
@@ -40,10 +47,42 @@ public class MazeGenerator : MonoBehaviour
 
     IEnumerator ComissionMaze()
     {
+        BuildFloor();
+
         yield return GenerateMaze(MazeGenStepSize);
         yield return ConnectCells(MazeGenStepSize);
 
-        StartCoroutine(AddRandomReplacers());
+        nav.BuildNavMesh();
+
+        //StartCoroutine(AddRandomReplacers());
+    }
+
+    //The current scaling and positioning calculation use constants
+    //that were only tested with a maze scale of 5, so be careful
+    void BuildFloor()
+    {
+        float sizeScale = 8f;
+        float posScale = 2f;
+
+        //Create the floor
+        var floor = Instantiate(MazeFloor, this.gameObject.transform);
+
+        //Scale and position the floor
+        floor.transform.localScale = new Vector3(
+            MazeLength * sizeScale,
+            0.33f,
+            MazeWidth * sizeScale
+        );
+
+        floor.transform.localPosition = new Vector3(
+            (floor.transform.localScale.x / posScale) - MazeScale,
+            1f,
+            (floor.transform.localScale.z / posScale) - MazeScale
+        );
+
+        //First-Pass Nav Mesh
+        nav = floor.GetComponent<NavMeshSurface>();
+        nav.BuildNavMesh();
     }
 
     IEnumerator GenerateMaze(int step)
