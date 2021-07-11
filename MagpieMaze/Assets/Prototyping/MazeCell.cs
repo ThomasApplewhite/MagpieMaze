@@ -11,17 +11,17 @@ public class MazeCell : MonoBehaviour
 
     //This cell's coordinates in its maze
     public Vector2Int Coordinate { get; private set; }
-
+    
     public static void ConnectNorthSouth(MazeCell North, MazeCell South)
     {
-        Destroy(North.SouthWall);
-        Destroy(South.NorthWall);
+        North.SouthWall?.SetActive(false);
+        South.NorthWall?.SetActive(false);
     }
 
     public static void ConnectEastWest(MazeCell East, MazeCell West)
     {
-        Destroy(East.WestWall);
-        Destroy(West.EastWall);
+        East.WestWall?.SetActive(false);
+        West.EastWall?.SetActive(false);
     }
 
     public virtual void Initialize(Vector2Int coord)
