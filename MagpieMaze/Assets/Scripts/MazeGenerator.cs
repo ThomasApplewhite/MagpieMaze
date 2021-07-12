@@ -18,6 +18,9 @@ public class MazeGenerator : MonoBehaviour
     [Tooltip("How many cells should be generated at a time (bigger number = faster but needs better computer)")]
     public int MazeGenStepSize = 10;
 
+    [Tooltip("The location of the Minotaur's spawn point")]
+    public Vector3 minotaurSpawn = new Vector3(66f, 1f, 66f);
+
     [Tooltip("The prefab of a Maze Cell")]
     public GameObject MazeCell;
 
@@ -26,6 +29,9 @@ public class MazeGenerator : MonoBehaviour
 
     [Tooltip("The prefab of the floor")]
     public GameObject MazeFloor;
+
+    [Tooltip("The prefab of the Minotaur")]
+    public GameObject Minotaur;
 
     //The NavMesh of the floor
     private NavMeshSurface nav;
@@ -53,6 +59,8 @@ public class MazeGenerator : MonoBehaviour
         yield return ConnectCells(MazeGenStepSize);
 
         nav.BuildNavMesh();
+
+        SpawnMinotaur();
 
         //StartCoroutine(AddRandomReplacers());
     }
@@ -143,6 +151,11 @@ public class MazeGenerator : MonoBehaviour
         }
 
         //And the maze should be done now
+    }
+
+    void SpawnMinotaur()
+    {
+        Instantiate(Minotaur, minotaurSpawn, Quaternion.identity);
     }
 
     IEnumerator AddRandomReplacers()
