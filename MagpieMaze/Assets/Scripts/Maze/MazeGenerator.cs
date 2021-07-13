@@ -18,6 +18,9 @@ public class MazeGenerator : MonoBehaviour
     [Tooltip("How many cells should be generated at a time (bigger number = faster but needs better computer)")]
     public int MazeGenStepSize = 10;
 
+    [Tooltip("The location of the Player's spawn point")]
+    public Vector3 playerSpawn = new Vector3(3f, 1f, 3f);
+
     [Tooltip("The location of the Minotaur's spawn point")]
     public Vector3 minotaurSpawn = new Vector3(66f, 1f, 66f);
 
