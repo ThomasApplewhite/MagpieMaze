@@ -6,7 +6,7 @@ public class TeleportPlayerToCoordinate : MonoBehaviour
 {
     public Vector3 teleportDestination = new Vector3(0f, 0f, 0f);
 
-    void OnCollisionEnter(Collision collided)
+    void OnTriggerEnter(Collider collided)
     {
         collided.gameObject.transform.position = teleportDestination;
     }

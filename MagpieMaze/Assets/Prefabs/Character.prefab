@@ -136,7 +136,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2832877408305983239}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92e0a60571f2ed5c588436152f5155ba, type: 3}
   m_Name: 
@@ -253,6 +253,18 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9540f6ec-8d45-49d0-8834-cfd946ce957e
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8facff4e-64bf-453d-8ef6-4018028f210a
+    m_ActionName: Gameplay/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: df5f899d-b65f-4ae1-b31c-d40dda045c03
+    m_ActionName: Gameplay/Sprint[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 30167ddf-89b5-4726-82c2-fdd1af2ba735
+    m_ActionName: Gameplay/UnlockCursor[/Keyboard/o]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard & Mouse
   m_DefaultActionMap: Gameplay
@@ -385,6 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7276c74d8b3fcad779c985b062ec2bb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  killLocation: {fileID: 0}
 --- !u!1 &2832877408394727413
 GameObject:
   m_ObjectHideFlags: 0
