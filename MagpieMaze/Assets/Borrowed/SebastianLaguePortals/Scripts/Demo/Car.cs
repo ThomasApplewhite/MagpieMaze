@@ -9,7 +9,7 @@ public class Car : PortalTraveller {
     float smoothV;
 
     void Start () {
-        Debug.Log ("Press C to stop/start car");
+        //Debug.Log ("Press C to stop/start car");
         targetSpeed = maxSpeed;
     }
 
@@ -17,9 +17,10 @@ public class Car : PortalTraveller {
         float moveDst = Time.deltaTime * speed;
         transform.position += transform.forward * Time.deltaTime * speed;
 
-        if (Input.GetKeyDown (KeyCode.C)) {
+        targetSpeed = (targetSpeed == 0) ? maxSpeed : 0;
+        /*if (Input.GetKeyDown (KeyCode.C)) {
             targetSpeed = (targetSpeed == 0) ? maxSpeed : 0;
-        }
+        }*/
         speed = Mathf.SmoothDamp (speed, targetSpeed, ref smoothV, .5f);
     }
 }
