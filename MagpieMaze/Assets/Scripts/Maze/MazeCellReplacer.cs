@@ -1,3 +1,6 @@
+//Copyright (c) 2021 Magpie Paulsen
+//Written by Thomas Applewhite
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
