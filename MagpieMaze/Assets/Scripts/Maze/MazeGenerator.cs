@@ -9,6 +9,7 @@ using UnityEngine.AI;
 
 public class MazeGenerator : MonoBehaviour
 {
+    [Header("Generation Parameters")]
     [Tooltip("How long the maze should be")]
     public int MazeLength = 10;
     
@@ -21,23 +22,29 @@ public class MazeGenerator : MonoBehaviour
     [Tooltip("How many cells should be generated at a time (bigger number = faster but needs better computer)")]
     public int MazeGenStepSize = 10;
 
+    [Header("Spawn Parameters")]
     [Tooltip("The location of the Player's spawn point")]
     public Vector3 playerSpawn = new Vector3(3f, 1f, 3f);
 
     [Tooltip("The location of the Minotaur's spawn point")]
     public Vector3 minotaurSpawn = new Vector3(66f, 1f, 66f);
 
+    [Header("Prefab Parameters")]
     [Tooltip("The prefab of a Maze Cell")]
     public GameObject MazeCell;
-
-    [Tooltip("The prefab of a Replacer to just replace some things")]
-    public GameObject ReplacerCell;
 
     [Tooltip("The prefab of the floor")]
     public GameObject MazeFloor;
 
     [Tooltip("The prefab of the Minotaur")]
     public GameObject Minotaur;
+
+    [Header("Dev Parameters")]
+    [Tooltip("The prefab of a Replacer to just replace some things")]
+    public GameObject ReplacerCell;
+
+    [Tooltip("The size of the XbyX square that the above replacer cell takes up")]
+    public int replacerSize = 3;
 
     //The NavMesh of the floor
     private NavMeshSurface nav;
@@ -75,7 +82,9 @@ public class MazeGenerator : MonoBehaviour
     //that were only tested with a maze scale of 5, so be careful
     void BuildFloor()
     {
+        //Cell size constant modifier
         float sizeScale = 8f;
+        //Cell position constant modifier
         float posScale = 2f;
 
         //Create the floor
@@ -101,13 +110,17 @@ public class MazeGenerator : MonoBehaviour
 
     IEnumerator GenerateMaze(int step)
     {
+        //For each (i, j) coordinate...
         int stepCount = 0;
         for(int i = 0; i < MazeWidth; ++i)
         {
             for(int j = 0; j < MazeLength; ++j)
             {
+                //Make a new cell and add it to the maze array
                 var newcell = MakeCell(i, j);
                 Maze[i, j] = newcell;
+                
+                //every stepCount cells, pause to let the engine catch up
                 ++stepCount;
                 if(stepCount > step)
                 {
@@ -188,22 +201,24 @@ public class MazeGenerator : MonoBehaviour
 
     void ConnectToRandomNeighbor(MazeCell center, List<MazeCell> inCells)
     {
+        //Create an array of cells
         List<MazeCell> validCells = new List<MazeCell>();
         var c = center.Coordinate;
 
         Action<int, int> validate = new Action<int, int>( (x, y) => 
         {
+            //Check if the cell at (x, y) exists and is in the maze
+            //If so, mark it as a valid cell
             if(IsValidCell(x, y) && inCells.Contains(Maze[x, y])) validCells.Add(Maze[x, y]);
         });
 
-        //add all valid cells
+        //add all valid cells adjacent to the center cell
         validate(c.x+1, c.y);
         validate(c.x-1, c.y);
         validate(c.x, c.y+1);
         validate(c.x, c.y-1);
 
-        //connect to a random valid cell
-
+        //pick a random valid cell and connect to it
         var otherCell = validCells[Rnd.Next(validCells.Count)];
         center.Connect(otherCell);    
     }
@@ -212,16 +227,22 @@ public class MazeGenerator : MonoBehaviour
     {
         Vector2Int c = center.Coordinate;
 
-        Action<int, int, bool> frontify = new Action<int, int, bool>( (dyn, stat, dynamicX) => 
+        //Determines if the maze cell should be added to the "frontier" of the maze, which are cells
+        //that are adjacent to cells in the maze but are not themselves in the main
+        Action<int, int> frontify = new Action<int, int>( (x, y) => 
         {
+            /*//If we're checking cells on the x axis...
             if(dynamicX)
             {
+                //and such a cell exists and it isn't already in the maze or the frontier
                 if(IsValidCell(dyn, stat) && !inCells.Contains(Maze[dyn, stat]) 
                     && !frontierCells.Contains(Maze[dyn, stat]))
                 {
+                    //add it to the frontier
                     frontierCells.Add(Maze[dyn, stat]);
                 }
             }
+            //Otherwise check as if the cell is on the x axis
             else
             {
                 if(IsValidCell(stat, dyn) && !inCells.Contains(Maze[stat, dyn]) 
@@ -229,16 +250,28 @@ public class MazeGenerator : MonoBehaviour
                 {
                     frontierCells.Add(Maze[stat, dyn]);
                 }
+            }*/
+
+            if(IsValidCell(x, y) && !inCells.Contains(Maze[x, y]) && !frontierCells.Contains(Maze[x, y]))
+            {
+                frontierCells.Add(Maze[x, y]);
             }
             
         });
     
-        frontify(c.x+1, c.y, true);
+        //Frontify all of the center's neighbors
+        frontify(c.x+1, c.y);
+        frontify(c.x-1, c.y);
+        frontify(c.x, c.y+1);
+        frontify(c.x, c.y-1);
+
+        /*frontify(c.x+1, c.y, true);
         frontify(c.x-1, c.y, true);
         frontify(c.y+1, c.x, false);
-        frontify(c.y-1, c.x, false);
+        frontify(c.y-1, c.x, false);*/
     }
 
+    //Simple bounds check on the array. Can C# do this automatically?
     bool IsValidCell(int i, int j)
     {
         return (i >= 0 && MazeWidth > i) && (j >= 0 && MazeLength > j);
