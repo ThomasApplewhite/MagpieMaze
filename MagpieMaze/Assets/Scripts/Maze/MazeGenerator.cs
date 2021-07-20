@@ -75,7 +75,7 @@ public class MazeGenerator : MonoBehaviour
 
         SpawnMinotaur();
 
-        //StartCoroutine(AddRandomReplacers());
+        SpawnMonolith();
     }
 
     //The current scaling and positioning calculation use constants
@@ -177,26 +177,23 @@ public class MazeGenerator : MonoBehaviour
         Instantiate(Minotaur, minotaurSpawn, Quaternion.identity);
     }
 
-    IEnumerator AddRandomReplacers()
+    void SpawnMonolith()
     {
-        while(true)
-        {
-            //pick a random cell
-            int randX = Rnd.Next(MazeWidth);
-            int randY = Rnd.Next(MazeLength);
+        //Pick a random cell
+        MazeCell center = GetRandomCellWithPadding(replacerSize + 1);
 
-            //replace it for a little while
-            MazeCellReplacer replacer = Instantiate(ReplacerCell, 
-                this.gameObject.transform).GetComponent<MazeCellReplacer>();
-        
-            Debug.Log("Replacing Maze Cell");
-            replacer.Initialize(Maze[randX, randY]);
+        //Get the cells around it
+        MazeCell[] radius = GetCellsInRadius(center, replacerSize - 1);
 
-            yield return new WaitForSeconds(3f);
+        //Create the replacer
+        var replacer = Instantiate(
+            ReplacerCell, 
+            center.gameObject.transform.position,
+            Quaternion.identity
+        ).GetComponent<MazeCellReplacer>();
 
-            replacer.Denitialize();
-        }
-        
+        //Initialize it with the chosen cells
+        replacer.Initialize(center, radius);
     }
 
     void ConnectToRandomNeighbor(MazeCell center, List<MazeCell> inCells)
@@ -271,12 +268,6 @@ public class MazeGenerator : MonoBehaviour
         frontify(c.y-1, c.x, false);*/
     }
 
-    //Simple bounds check on the array. Can C# do this automatically?
-    bool IsValidCell(int i, int j)
-    {
-        return (i >= 0 && MazeWidth > i) && (j >= 0 && MazeLength > j);
-    }
-
     MazeCell MakeCell(int i, int j)
     {
         //create cell
@@ -298,4 +289,57 @@ public class MazeGenerator : MonoBehaviour
         cellData.Initialize(new Vector2Int(i, j));
         return cellData;
     }
+
+    //Simple bounds check on the array. Can C# do this automatically?
+    bool IsValidCell(int i, int j)
+    {
+        return (i >= 0 && MazeWidth > i) && (j >= 0 && MazeLength > j);
+    }
+
+    //Returns a random cell in the maze
+    MazeCell GetRandomCell()
+    {
+        return Maze[Rnd.Next(MazeWidth), Rnd.Next(MazeLength)];
+    }
+
+    //Returns a random cell in the maze that has at least pad many cells between it and the
+    //outside of the maze
+    MazeCell GetRandomCellWithPadding(int pad)
+    {
+        //1 is added to the max of the pad because System.Random.Next()'s upper bound is exclusive
+        return Maze[Rnd.Next(pad, MazeWidth - pad + 1), Rnd.Next(pad, MazeLength - pad + 1)];
+    }
+
+    //Returns an array of all the cells in a radius around a specified cell
+    MazeCell[] GetCellsInRadius(MazeCell center, int radius)
+    {
+        List<MazeCell> radiusCells = new List<MazeCell>();
+        var c = center.Coordinate;
+
+        //Step 1: get every cell on the same X or Y level as the center
+        for(int i = 1; i <= radius; ++i)
+        {
+            if(IsValidCell(c.x+i, c.y)) radiusCells.Add(Maze[c.x+i, c.y]);
+            if(IsValidCell(c.x-i, c.y)) radiusCells.Add(Maze[c.x-i, c.y]);
+            if(IsValidCell(c.x, c.y+i)) radiusCells.Add(Maze[c.x, c.y+i]);
+            if(IsValidCell(c.x, c.y-i)) radiusCells.Add(Maze[c.x, c.y-i]);
+        }
+
+        //Step 2: get every cell that isn't on the same X or Y level
+        for(int i = 1; i <= radius; ++i)
+        {
+            for(int j = 1; j <= radius; ++j)
+            {
+                if(IsValidCell(c.x+i, c.y+j)) radiusCells.Add(Maze[c.x+i, c.y+j]);
+                if(IsValidCell(c.x-i, c.y+j)) radiusCells.Add(Maze[c.x-i, c.y+j]);
+                if(IsValidCell(c.x+i, c.y-j)) radiusCells.Add(Maze[c.x+i, c.y-j]);
+                if(IsValidCell(c.x-i, c.y-j)) radiusCells.Add(Maze[c.x-i, c.y-j]);
+            }
+        }
+
+        //Step 3: return the cells as an array
+        //Keeping the radius as an array makes it easy to pass to a params argument
+        return radiusCells.ToArray();
+    }
 }
+
