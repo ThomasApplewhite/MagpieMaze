@@ -14,50 +14,41 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>
 Code originally written by Thomas Applewhite*/
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(Collider))]
-public class Minotaur : MonoBehaviour
+public class SpawnRoom : MazeCellReplacer
 {
-    //The Minotaur's NavMeshAgent component
-    private NavMeshAgent agent;
-
-    //A reference to the player, for ease
+    //The player, for easy reference
     private GameObject player;
-
-    //What happens when the Minotaur collides with the player
-    private Action<GameObject> OnPlayerContact;
 
     // Start is called before the first frame update
     void Start()
     {
-        agent = this.gameObject.GetComponent<NavMeshAgent>();
+        //If the player is around, save them for easy reference
         player = GameObject.FindWithTag("Player");
-
-        OnPlayerContact = KillPlayer;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    public override void Initialize(MazeCell centerReplacee, params MazeCell[] replacees)
     {
-        agent.SetDestination(player.transform.position);
+        //Initialize as normal
+        base.Initialize(centerReplacee, replacees);
+
+        //But deparent the player
+        player.transform.parent = null;
+
+        //and deactivate all of the walls
+        NorthWall.SetActive(false);
+        SouthWall.SetActive(false);
+        EastWall.SetActive(false);
+        WestWall.SetActive(false);
     }
 
-    void OnCollisionEnter(Collision collided)
+    // Called when no cameras can see this script's gameObject anymore
+    void OnBecameInvisible()
     {
-        if(collided.gameObject == player)
-        {
-            OnPlayerContact.Invoke(collided.gameObject);
-        }
-    }
-
-    void KillPlayer(GameObject player)
-    {
-        player.SendMessage("Kill");
+        Debug.Log("Spawn Room can no longer be seen");
+        //this.Denitialize();
     }
 }

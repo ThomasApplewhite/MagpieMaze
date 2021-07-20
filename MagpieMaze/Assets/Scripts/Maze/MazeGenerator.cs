@@ -1,5 +1,18 @@
-//Copyright (c) 2021 Magpie Paulsen
-//Written by Thomas Applewhite
+/*Copyright (c) 2021 Magpie Paulsen
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>
+Code originally written by Thomas Applewhite*/
 
 using System;
 using System.Collections;
@@ -26,6 +39,9 @@ public class MazeGenerator : MonoBehaviour
     [Tooltip("The location of the Player's spawn point")]
     public Vector3 playerSpawn = new Vector3(3f, 1f, 3f);
 
+    //[Tooltip("The Player's spawn room")]
+    //public GameObject PlayerSpawnRoom;
+
     [Tooltip("The location of the Minotaur's spawn point")]
     public Vector3 minotaurSpawn = new Vector3(66f, 1f, 66f);
 
@@ -45,6 +61,9 @@ public class MazeGenerator : MonoBehaviour
 
     [Tooltip("The size of the XbyX square that the above replacer cell takes up")]
     public int replacerSize = 3;
+    
+    [Tooltip("The Prefab of an Nclidian Duo")]
+    public GameObject Nclidian;
 
     //The NavMesh of the floor
     private NavMeshSurface nav;
@@ -64,6 +83,14 @@ public class MazeGenerator : MonoBehaviour
         StartCoroutine(ComissionMaze());
     }
 
+    /*
+    ---Notes about Maze Generation---
+    The origin cell is (0, 0), which is at 0, 0, 0 relative to the Maze parent object
+    X Coordinates increment Eastward
+    Y Coordinates increment Northward
+    */
+
+    ///GENERATION METHODS--------------------------------------------------------------------------
     IEnumerator ComissionMaze()
     {
         BuildFloor();
@@ -75,7 +102,7 @@ public class MazeGenerator : MonoBehaviour
 
         SpawnMinotaur();
 
-        SpawnMonolith();
+        //SpawnPortals();
     }
 
     //The current scaling and positioning calculation use constants
@@ -172,30 +199,6 @@ public class MazeGenerator : MonoBehaviour
         //And the maze should be done now
     }
 
-    void SpawnMinotaur()
-    {
-        Instantiate(Minotaur, minotaurSpawn, Quaternion.identity);
-    }
-
-    void SpawnMonolith()
-    {
-        //Pick a random cell
-        MazeCell center = GetRandomCellWithPadding(replacerSize + 1);
-
-        //Get the cells around it
-        MazeCell[] radius = GetCellsInRadius(center, replacerSize - 1);
-
-        //Create the replacer
-        var replacer = Instantiate(
-            ReplacerCell, 
-            center.gameObject.transform.position,
-            Quaternion.identity
-        ).GetComponent<MazeCellReplacer>();
-
-        //Initialize it with the chosen cells
-        replacer.Initialize(center, radius);
-    }
-
     void ConnectToRandomNeighbor(MazeCell center, List<MazeCell> inCells)
     {
         //Create an array of cells
@@ -220,7 +223,7 @@ public class MazeGenerator : MonoBehaviour
         center.Connect(otherCell);    
     }
 
-    void MakeAllNeighborsFrontier(MazeCell center, List<MazeCell> inCells, List<MazeCell> frontierCells)
+        void MakeAllNeighborsFrontier(MazeCell center, List<MazeCell> inCells, List<MazeCell> frontierCells)
     {
         Vector2Int c = center.Coordinate;
 
@@ -268,7 +271,7 @@ public class MazeGenerator : MonoBehaviour
         frontify(c.y-1, c.x, false);*/
     }
 
-    MazeCell MakeCell(int i, int j)
+        MazeCell MakeCell(int i, int j)
     {
         //create cell
         var cell = Instantiate(MazeCell, this.gameObject.transform);
@@ -290,6 +293,57 @@ public class MazeGenerator : MonoBehaviour
         return cellData;
     }
 
+    //POINT-OF-INTEREST METHODS--------------------------------------------------------------------
+    void SpawnMinotaur()
+    {
+        Instantiate(Minotaur, minotaurSpawn, Quaternion.identity);
+    }
+
+    void SpawnMonolith()
+    {
+        //Pick a random cell
+        MazeCell center = GetRandomCellWithPadding(replacerSize + 1);
+
+        //Get the cells around it
+        MazeCell[] radius = GetCellsInRadius(center, replacerSize - 1);
+
+        //Create the replacer
+        var replacer = Instantiate(
+            ReplacerCell, 
+            center.gameObject.transform.position,
+            Quaternion.identity
+        ).GetComponent<MazeCellReplacer>();
+
+        //Initialize it with the chosen cells
+        replacer.Initialize(center, radius);
+    }
+    
+    void SpawnSpawnRoom()
+    {
+        //the size of the spawn room as a constant fuck off I'll make it more flexible later
+        int spawnRoomSize = 2;
+
+        //Pick a random cell
+        MazeCell center = GetRandomCellWithPadding(spawnRoomSize + 1);
+
+        //Get the cells around it
+        MazeCell[] radius = GetCellsInRadius(center, spawnRoomSize - 1);
+
+        //Initialize the spawn room
+        GameObject.FindWithTag("Respawn").GetComponent<MazeCellReplacer>().Initialize(center, radius);
+    }
+
+    void SpawnPortals()
+    {
+        //Get two random cells
+        var a = GetRandomCellWithPadding(1);
+        var b = GetRandomCellWithPadding(1);
+
+        //And make the portals idk it's not rocket science
+        Instantiate(Nclidian).GetComponent<NclidianController>().PlacePortals(a, b);
+    }
+
+    ///HELPER METHODS------------------------------------------------------------------------------
     //Simple bounds check on the array. Can C# do this automatically?
     bool IsValidCell(int i, int j)
     {

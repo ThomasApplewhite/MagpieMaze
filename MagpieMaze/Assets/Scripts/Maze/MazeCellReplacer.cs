@@ -1,5 +1,18 @@
-//Copyright (c) 2021 Magpie Paulsen
-//Written by Thomas Applewhite
+/*Copyright (c) 2021 Magpie Paulsen
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>
+Code originally written by Thomas Applewhite*/
 
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +29,7 @@ public class MazeCellReplacer : MazeCell
     private MazeCell[] replacees;
 
     //Disables replacees so that the replacer can take their place
-    public void Initialize(MazeCell centerReplacee, params MazeCell[] replacees)
+    public virtual void Initialize(MazeCell centerReplacee, params MazeCell[] replacees)
     {
         //copy the replacee's scale and position, then disable the replacee for now
         this.centerReplacee = centerReplacee;
@@ -30,7 +43,7 @@ public class MazeCellReplacer : MazeCell
         foreach(MazeCell replacee in this.replacees) replacee.gameObject.SetActive(false);
     }
 
-    public void Denitialize()
+    public virtual void Denitialize()
     {
         //return the replacees and self-destruct
         this.centerReplacee.gameObject.SetActive(true);

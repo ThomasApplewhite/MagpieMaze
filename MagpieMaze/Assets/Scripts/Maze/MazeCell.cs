@@ -1,5 +1,18 @@
-//Copyright (c) 2021 Magpie Paulsen
-//Written by Thomas Applewhite
+/*Copyright (c) 2021 Magpie Paulsen
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>
+Code originally written by Thomas Applewhite*/
 
 using System.Collections;
 using System.Collections.Generic;
@@ -15,16 +28,34 @@ public class MazeCell : MonoBehaviour
     //This cell's coordinates in its maze
     public Vector2Int Coordinate { get; private set; }
     
-    public static void ConnectNorthSouth(MazeCell North, MazeCell South)
+    public static bool ConnectNorthSouth(MazeCell North, MazeCell South)
     {
-        North.SouthWall?.SetActive(false);
-        South.NorthWall?.SetActive(false);
+        if(North.Coordinate.y - South.Coordinate.y == 1)
+        {
+            North.SouthWall?.SetActive(false);
+            South.NorthWall?.SetActive(false);
+            return true;
+        }
+        else
+        {
+            Debug.LogWarning("MazeCell.ConnectNorthSouth: Cells are not correctly aligned");
+        }
+        return false;
     }
 
-    public static void ConnectEastWest(MazeCell East, MazeCell West)
+    public static bool ConnectEastWest(MazeCell East, MazeCell West)
     {
-        East.WestWall?.SetActive(false);
-        West.EastWall?.SetActive(false);
+        if(East.Coordinate.x - West.Coordinate.x == 1)
+        {
+            East.WestWall?.SetActive(false);
+            West.EastWall?.SetActive(false);
+            return true;
+        }
+        else
+        {
+            Debug.LogWarning("MazeCell.ConnectEastWest: Cells are not correctly aligned");
+        }
+        return false;
     }
 
     public virtual void Initialize(Vector2Int coord)
@@ -34,7 +65,7 @@ public class MazeCell : MonoBehaviour
 
     //Makes this cell and otherCell connect by destroying the walls between them
     //If at least one of these cells is "in", the other will be "in" also
-    public void Connect(MazeCell otherCell)
+    public bool Connect(MazeCell otherCell)
     {
         //this.Coordinate is second, so all of these checks will judge relative to this
         Vector2 compositeCoord = otherCell.Coordinate - this.Coordinate;
@@ -57,8 +88,11 @@ public class MazeCell : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"MazeCell.Connet: The two cells at this.{this.Coordinate}" +
+            Debug.LogWarning($"MazeCell.Connect: The two cells at this.{this.Coordinate}" +
                 $" and other.{otherCell.Coordinate} are not adjacent");
+            return false;
         }
+
+        return true;
     }     
 }
