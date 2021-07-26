@@ -20,12 +20,14 @@ using UnityEngine;
 
 public class NclidianController : MonoBehaviour
 {
-    public GameObject portalA;
-    public GameObject portalB;
+    public GameObject PortalA;
+    public GameObject PortalB;
 
     //Replaces alphaCell and betaCell with portalA and portalB, respectively
-    public void PlacePortals(MazeCell alphaCell, MazeCell betaCell)
+    public void PlacePortals(MazeNeighbors alphaRegion, MazeNeighbors betaRegion)
     {
+        //The original replacer method, which does not connect to the maze.
+        //Currently unused.
         System.Action<GameObject, MazeCell> portalReplace = (GameObject portal, MazeCell replacee) => 
         {
             portal.transform.parent = null;
@@ -39,13 +41,24 @@ public class NclidianController : MonoBehaviour
             ));
         };
 
-        portalReplace(portalA, alphaCell);
-        portalReplace(portalB, betaCell);
-    }
+        //This replacer method does neighbor connections and the initial replacement
+        System.Action<GameObject, MazeNeighbors> connectedPortalReplace = 
+            (GameObject portal, MazeNeighbors region) =>
+        {
+            //deparent the portal and do the replacement
+            var portalCell = portal.GetComponent<MazeCellReplacer>();
+            portal.transform.parent = null;
+            portalCell.Initialize(region.Owner);
 
-    void AttemptPortalReplace()
-    {
+            //Then the replaced cell's north neighbor (and potentially others)
+            //to the cell
+            portalCell.Connect(region.North);
 
+            //I'll get to the other walls later
+        };
+
+        connectedPortalReplace(PortalA, alphaRegion);
+        connectedPortalReplace(PortalB, betaRegion);
     }
 
     /*
@@ -55,5 +68,6 @@ public class NclidianController : MonoBehaviour
             of cells (including the north wall so the portal is always accessible both ways)
         The issue that this leaves is that portals will always be on the "north" wall of a cell
         Hopefully, players simply won't notice
+        And yeah I can just pad to make sure portals dont go directly to the boundires of a maze
     */
 }

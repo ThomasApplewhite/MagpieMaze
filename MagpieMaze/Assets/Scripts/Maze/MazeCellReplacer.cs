@@ -34,6 +34,7 @@ public class MazeCellReplacer : MazeCell
         //copy the replacee's scale and position, then disable the replacee for now
         this.centerReplacee = centerReplacee;
         this.replacees = replacees;
+        this.Coordinate = this.centerReplacee.Coordinate;
 
         this.gameObject.transform.localPosition = this.centerReplacee.gameObject.transform.localPosition;
         this.gameObject.transform.localScale = this.centerReplacee.gameObject.transform.localScale;

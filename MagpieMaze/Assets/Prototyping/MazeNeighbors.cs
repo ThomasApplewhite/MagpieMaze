@@ -40,6 +40,7 @@ public class MazeNeighbors
     public MazeNeighbors(MazeCell center, MazeCell[,] maze)
     {
         var c = center.Coordinate;
+        Owner = center;
         North = maze[c.x, c.y+1];
         South = maze[c.x, c.y-1];
         East = maze[c.x-1, c.y];
@@ -57,6 +58,8 @@ public class MazeNeighbors
     Either way, as long as it's fast enough, it doesn't matter*/
     public MazeNeighbors(MazeCell center, MazeCell[] area)
     {
+        Owner = center;
+        
         //Neighbor location predicate
         Predicate<MazeCell> isNeighbor = (cell) => 
         {

@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2764e078412da9706ac73aade6863f23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NorthWall: {fileID: 7256622483539242836}
+  NorthWall: {fileID: 929128324915508549}
   SouthWall: {fileID: 7249256066727699476}
   EastWall: {fileID: 7249256068559310743}
   WestWall: {fileID: 7249256067281506146}
@@ -1238,8 +1238,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.04, y: 2.69, z: 1.55}
-  m_Center: {x: 0, y: 1.38, z: 0}
+  m_Size: {x: 5, y: 6, z: 1}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!54 &7256622483539242838
 Rigidbody:
   m_ObjectHideFlags: 0

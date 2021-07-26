@@ -102,7 +102,7 @@ public class MazeGenerator : MonoBehaviour
 
         SpawnMinotaur();
 
-        //SpawnPortals();
+        SpawnPortals();
     }
 
     //The current scaling and positioning calculation use constants
@@ -336,11 +336,14 @@ public class MazeGenerator : MonoBehaviour
     void SpawnPortals()
     {
         //Get two random cells
-        var a = GetRandomCellWithPadding(1);
-        var b = GetRandomCellWithPadding(1);
+        var a = GetRandomCellWithPadding(2);
+        var b = GetRandomCellWithPadding(2);
 
         //And make the portals idk it's not rocket science
-        Instantiate(Nclidian).GetComponent<NclidianController>().PlacePortals(a, b);
+        Instantiate(Nclidian).GetComponent<NclidianController>().PlacePortals(
+            new MazeNeighbors(a, Maze),
+            new MazeNeighbors(b, Maze)
+        );
     }
 
     ///HELPER METHODS------------------------------------------------------------------------------

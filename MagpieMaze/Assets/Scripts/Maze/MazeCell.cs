@@ -26,7 +26,7 @@ public class MazeCell : MonoBehaviour
     public GameObject WestWall;
 
     //This cell's coordinates in its maze
-    public Vector2Int Coordinate { get; private set; }
+    public Vector2Int Coordinate { get; protected set; }
     
     public static bool ConnectNorthSouth(MazeCell North, MazeCell South)
     {
