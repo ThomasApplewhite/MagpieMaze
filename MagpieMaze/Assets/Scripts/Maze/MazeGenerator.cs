@@ -65,6 +65,9 @@ public class MazeGenerator : MonoBehaviour
     [Tooltip("The Prefab of an Nclidian Duo")]
     public GameObject Nclidian;
 
+    [Tooltip("The number of portal pairs that should be created in the maze")]
+    public int portalPairCount;
+
     //The NavMesh of the floor
     private NavMeshSurface nav;
 
@@ -102,7 +105,8 @@ public class MazeGenerator : MonoBehaviour
 
         SpawnMinotaur();
 
-        SpawnPortals();
+        for(int i = 0; i < portalPairCount; ++i) SpawnPortals();
+        
     }
 
     //The current scaling and positioning calculation use constants

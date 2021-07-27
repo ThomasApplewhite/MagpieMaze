@@ -785,6 +785,7 @@ MonoBehaviour:
   ReplacerCell: {fileID: 2805008745139986505, guid: 8952224d7b8c0ea7ab323de4b634c093, type: 3}
   replacerSize: 3
   Nclidian: {fileID: 5302675751402586096, guid: a0edf8b0e9af38d96bc478cf4913fe33, type: 3}
+  portalPairCount: 3
 --- !u!4 &1467784972
 Transform:
   m_ObjectHideFlags: 0
