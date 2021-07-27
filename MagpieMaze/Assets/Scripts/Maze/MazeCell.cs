@@ -28,12 +28,13 @@ public class MazeCell : MonoBehaviour
     //This cell's coordinates in its maze
     public Vector2Int Coordinate { get; protected set; }
     
-    public static bool ConnectNorthSouth(MazeCell North, MazeCell South)
+    //These two methods connect or disconnect two cells at a shared side
+    private static bool SyncWallNorthSouth(MazeCell North, MazeCell South, bool wallState)
     {
         if(North.Coordinate.y - South.Coordinate.y == 1)
         {
-            North.SouthWall?.SetActive(false);
-            South.NorthWall?.SetActive(false);
+            North.SouthWall?.SetActive(wallState);
+            South.NorthWall?.SetActive(wallState);
             return true;
         }
         else
@@ -43,12 +44,12 @@ public class MazeCell : MonoBehaviour
         return false;
     }
 
-    public static bool ConnectEastWest(MazeCell East, MazeCell West)
+    private static bool SyncWallEastWest(MazeCell East, MazeCell West, bool wallState)
     {
         if(East.Coordinate.x - West.Coordinate.x == 1)
         {
-            East.WestWall?.SetActive(false);
-            West.EastWall?.SetActive(false);
+            East.WestWall?.SetActive(wallState);
+            West.EastWall?.SetActive(wallState);
             return true;
         }
         else
@@ -72,23 +73,56 @@ public class MazeCell : MonoBehaviour
 
         if(compositeCoord.x == 1)
         {
-            MazeCell.ConnectEastWest(otherCell, this);
+            MazeCell.SyncWallEastWest(otherCell, this, false);
         }
         else if(compositeCoord.x == -1)
         {
-            MazeCell.ConnectEastWest(this, otherCell);
+            MazeCell.SyncWallEastWest(this, otherCell, false);
         }
         else if(compositeCoord.y == 1)
         {
-            MazeCell.ConnectNorthSouth(otherCell, this);
+            MazeCell.SyncWallNorthSouth(otherCell, this, false);
         }
         else if(compositeCoord.y == -1)
         {
-            MazeCell.ConnectNorthSouth(this, otherCell);
+            MazeCell.SyncWallNorthSouth(this, otherCell, false);
         }
         else
         {
             Debug.LogWarning($"MazeCell.Connect: The two cells at this.{this.Coordinate}" +
+                $" and other.{otherCell.Coordinate} are not adjacent");
+            return false;
+        }
+
+        return true;
+    }
+
+    //Makes this cell and otherCell disconnect by restoring the walls between them
+    //If a cell is disconnected from all of its neighbors, it becomes "out" of the maze
+    public bool Disconnect(MazeCell otherCell)
+    {
+        //this.Coordinate is second, so all of these checks will judge relative to this
+        Vector2 compositeCoord = otherCell.Coordinate - this.Coordinate;
+
+        if(compositeCoord.x == 1)
+        {
+            MazeCell.SyncWallEastWest(otherCell, this, true);
+        }
+        else if(compositeCoord.x == -1)
+        {
+            MazeCell.SyncWallEastWest(this, otherCell, true);
+        }
+        else if(compositeCoord.y == 1)
+        {
+            MazeCell.SyncWallNorthSouth(otherCell, this, true);
+        }
+        else if(compositeCoord.y == -1)
+        {
+            MazeCell.SyncWallNorthSouth(this, otherCell, true);
+        }
+        else
+        {
+            Debug.LogWarning($"MazeCell.Disconnect: The two cells at this.{this.Coordinate}" +
                 $" and other.{otherCell.Coordinate} are not adjacent");
             return false;
         }

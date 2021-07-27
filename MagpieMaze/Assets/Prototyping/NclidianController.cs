@@ -45,6 +45,12 @@ public class NclidianController : MonoBehaviour
         System.Action<GameObject, MazeNeighbors> connectedPortalReplace = 
             (GameObject portal, MazeNeighbors region) =>
         {
+            //disconnect the host region from all of its neighbors
+            region.Owner.Disconnect(region.North);
+            region.Owner.Disconnect(region.South);
+            region.Owner.Disconnect(region.East);
+            region.Owner.Disconnect(region.West);
+
             //deparent the portal and do the replacement
             var portalCell = portal.GetComponent<MazeCellReplacer>();
             portal.transform.parent = null;
@@ -54,7 +60,21 @@ public class NclidianController : MonoBehaviour
             //to the cell
             portalCell.Connect(region.North);
 
-            //I'll get to the other walls later
+            //Now connect a random wall that isn't the northern wall
+            //This UnityEngine statement generates a random int: 0, 1, or 2
+            switch(UnityEngine.Random.Range(0, 3)) {
+                case 0:
+                    portalCell.Connect(region.West);
+                    break;
+
+                case 1:
+                    portalCell.Connect(region.East);
+                    break;
+
+                default: //fires on anything other than 0 or 1
+                    portalCell.Connect(region.South);
+                    break;
+            }
         };
 
         connectedPortalReplace(PortalA, alphaRegion);
