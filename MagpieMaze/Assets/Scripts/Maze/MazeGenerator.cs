@@ -344,6 +344,11 @@ public class MazeGenerator : MonoBehaviour
             new MazeNeighbors(a, Maze),
             new MazeNeighbors(b, Maze)
         );
+
+        //Update the list of portals the player knows about (make sure not to do this too often!)
+        //Also maybe store a reference to the relevant component in the future?
+        //Things to figure out later.
+        GameObject.FindWithTag("Player").BroadcastMessage("UpdatePortalArray");
     }
 
     ///HELPER METHODS------------------------------------------------------------------------------

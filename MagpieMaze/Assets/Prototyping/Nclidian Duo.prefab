@@ -54,6 +54,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1177585177686050942}
     m_Modifications:
+    - target: {fileID: 550846050944733361, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 694652141638194847, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 929128324915508549, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2046096058709205858, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648437662874703182, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249256066727699476, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7249256067148179872, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -102,10 +126,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: NclidianCellA
       objectReference: {fileID: 0}
+    - target: {fileID: 7249256067148179878, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249256067281506146, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249256068082029197, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249256068559310743, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7256622483539242832, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
       propertyPath: linkedPortal
       value: 
       objectReference: {fileID: 3478397673803078944}
+    - target: {fileID: 7435220823799441245, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9085720903235162832, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
 --- !u!1 &2846742008084142926 stripped
@@ -136,6 +184,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1177585177686050942}
     m_Modifications:
+    - target: {fileID: 550846050944733361, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 694652141638194847, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 929128324915508549, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2046096058709205858, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648437662874703182, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249256066727699476, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7249256067148179872, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -184,6 +256,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NclidianCellB
       objectReference: {fileID: 0}
+    - target: {fileID: 7249256067148179878, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7249256067148179879, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
       propertyPath: EastWall
       value: 
@@ -196,10 +272,30 @@ PrefabInstance:
       propertyPath: SouthWall
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7249256067281506146, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249256068082029197, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249256068559310743, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7256622483539242832, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
       propertyPath: linkedPortal
       value: 
       objectReference: {fileID: 2859676403702947256}
+    - target: {fileID: 7435220823799441245, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9085720903235162832, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
 --- !u!1 &3489150681571236822 stripped
