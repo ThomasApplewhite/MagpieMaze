@@ -27,6 +27,22 @@ public class MazeCell : MonoBehaviour
 
     //This cell's coordinates in its maze
     public Vector2Int Coordinate { get; protected set; }
+
+    //This cell's approximate coordinate in world space
+    //The player can be placed at this position to be in this cell
+    public Vector3 anchorCoord {
+        get 
+        {
+            //This position is a little bit off of the ground, so be careful
+            //It will spawn the player in the air
+            var compositePos = 
+                NorthWall.transform.position + 
+                SouthWall.transform.position + 
+                EastWall.transform.position + 
+                WestWall.transform.position;
+            return compositePos / 4f;
+        }
+    }
     
     //These two methods connect or disconnect two cells at a shared side
     private static bool SyncWallNorthSouth(MazeCell North, MazeCell South, bool wallState)

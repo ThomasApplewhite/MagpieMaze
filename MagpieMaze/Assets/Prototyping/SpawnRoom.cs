@@ -18,37 +18,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnRoom : MazeCellReplacer
+public class SpawnRoom : MonoBehaviour
 {
-    //The player, for easy reference
-    private GameObject player;
+    [Header("Instance GameObjects")]
+    [Tooltip("The player's GameObject")]
+    public GameObject player;
 
-    // Start is called before the first frame update
-    void Start()
+    [Tooltip("The MazeCell of the White Room where the player sits while the maze is made")]
+    public MazeCell whiteRoom;
+
+    [Tooltip("The Maze of the starting Hallway")]
+    public MazeGenerator hallway;
+
+    [Tooltip("The actual Maze itself")]
+    public MazeGenerator mazeProper;
+
+    [Header("Prefab GameObjects")]
+    [Tooltip("The NclidianController prefab")]
+    public GameObject Nclidian;
+
+    //When the game starts (and the spawn process begins...)
+    public void BeingSpawn()
     {
-        //If the player is around, save them for easy reference
-        player = GameObject.FindWithTag("Player");
+        //Move the player to the white room
+        player.transform.position = whiteRoom.anchorCoord;
+
+        //that's it, for now
     }
 
-    public override void Initialize(MazeCell centerReplacee, params MazeCell[] replacees)
+    //When the actual maze is ready...
+    public void EndSpawn()
     {
-        //Initialize as normal
-        base.Initialize(centerReplacee, replacees);
+        //Replace the farthest cell in the hallway and a random cell in the real maze with a portal
+        MazeCell a = mazeProper.GetRandomCellWithPadding(3);    //random cell
+        MazeCell b = hallway.MazeLength > hallway.MazeWidth ?   //farthest cell
+            hallway.GetCell(hallway.MazeLength, 0) : 
+            hallway.GetCell(0, hallway.MazeWidth);
 
-        //But deparent the player
-        player.transform.parent = null;
+        //Make the actual portals and do the actual replacement
+        Instantiate(Nclidian).GetComponent<NclidianController>().PlacePortals(
+            new MazeNeighbors(a, mazeProper.Maze),
+            new MazeNeighbors(b, hallway.Maze)
+        );
 
-        //and deactivate all of the walls
-        NorthWall.SetActive(false);
-        SouthWall.SetActive(false);
-        EastWall.SetActive(false);
-        WestWall.SetActive(false);
-    }
-
-    // Called when no cameras can see this script's gameObject anymore
-    void OnBecameInvisible()
-    {
-        Debug.Log("Spawn Room can no longer be seen");
-        //this.Denitialize();
+        //Move the player to the 0 0 cell of the hallway maze
+        player.transform.position = hallway.GetCell(0, 0).anchorCoord;
     }
 }

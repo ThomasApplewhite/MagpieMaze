@@ -19,6 +19,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class MazeGenerator : MonoBehaviour
 {
@@ -34,6 +35,9 @@ public class MazeGenerator : MonoBehaviour
 
     [Tooltip("How many cells should be generated at a time (bigger number = faster but needs better computer)")]
     public int MazeGenStepSize = 10;
+
+    [Tooltip("Whether or not this maze should have a Minotaur")]
+    public bool generateMinotaur = true;
 
     [Header("Spawn Parameters")]
     [Tooltip("The location of the Player's spawn point")]
@@ -55,24 +59,28 @@ public class MazeGenerator : MonoBehaviour
     [Tooltip("The prefab of the Minotaur")]
     public GameObject Minotaur;
 
-    [Header("Dev Parameters")]
-    [Tooltip("The prefab of a Replacer to just replace some things")]
-    public GameObject ReplacerCell;
-
-    [Tooltip("The size of the XbyX square that the above replacer cell takes up")]
-    public int replacerSize = 3;
-    
     [Tooltip("The Prefab of an Nclidian Duo")]
     public GameObject Nclidian;
 
     [Tooltip("The number of portal pairs that should be created in the maze")]
     public int portalPairCount;
 
-    //The NavMesh of the floor
-    private NavMeshSurface nav;
+    [Header("Generation Timing Events")]
+    public MazeGenEvent OnGenerationBegin;
+    public UnityEvent OnGenerationEnd;
+
+    [Header("Dev Parameters")]
+    [Tooltip("The prefab of a Replacer to just replace some things")]
+    public GameObject ReplacerCell;
+
+    [Tooltip("The size of the XbyX square that the above replacer cell takes up")]
+    public int replacerSize = 3;
 
     //The Array of MazeCells that make up the maze
-    private MazeCell[,] Maze;
+    public MazeCell[,] Maze { get; private set; }
+
+    //The NavMesh of the floor
+    private NavMeshSurface nav;
 
     //The random number generator, for random number things
     private System.Random Rnd;
@@ -96,6 +104,10 @@ public class MazeGenerator : MonoBehaviour
     ///GENERATION METHODS--------------------------------------------------------------------------
     IEnumerator ComissionMaze()
     {
+        //Pass generation parameters to event listeners
+        //Currently, this is just the MazeScale parameter
+        OnGenerationBegin.Invoke(MazeScale);
+
         BuildFloor();
 
         yield return GenerateMaze(MazeGenStepSize);
@@ -103,10 +115,11 @@ public class MazeGenerator : MonoBehaviour
 
         nav.BuildNavMesh();
 
-        SpawnMinotaur();
+        if(generateMinotaur) SpawnMinotaur();
 
         for(int i = 0; i < portalPairCount; ++i) SpawnPortals();
-        
+
+        OnGenerationEnd.Invoke();
     }
 
     //The current scaling and positioning calculation use constants
@@ -123,9 +136,9 @@ public class MazeGenerator : MonoBehaviour
 
         //Scale and position the floor
         floor.transform.localScale = new Vector3(
-            MazeLength * sizeScale,
+            MazeWidth * sizeScale,
             0.33f,
-            MazeWidth * sizeScale
+            MazeLength * sizeScale
         );
 
         floor.transform.localPosition = new Vector3(
@@ -348,36 +361,36 @@ public class MazeGenerator : MonoBehaviour
             new MazeNeighbors(a, Maze),
             new MazeNeighbors(b, Maze)
         );
-
-        //Update the list of portals the player knows about (make sure not to do this too often!)
-        //Also maybe store a reference to the relevant component in the future?
-        //Things to figure out later.
-        GameObject.FindWithTag("Player").BroadcastMessage("UpdatePortalArray");
     }
 
     ///HELPER METHODS------------------------------------------------------------------------------
     //Simple bounds check on the array. Can C# do this automatically?
-    bool IsValidCell(int i, int j)
+    public bool IsValidCell(int i, int j)
     {
         return (i >= 0 && MazeWidth > i) && (j >= 0 && MazeLength > j);
     }
 
+    public MazeCell GetCell(int x, int y)
+    {
+        return Maze[x, y];
+    }
+
     //Returns a random cell in the maze
-    MazeCell GetRandomCell()
+    public MazeCell GetRandomCell()
     {
         return Maze[Rnd.Next(MazeWidth), Rnd.Next(MazeLength)];
     }
 
     //Returns a random cell in the maze that has at least pad many cells between it and the
     //outside of the maze
-    MazeCell GetRandomCellWithPadding(int pad)
+    public MazeCell GetRandomCellWithPadding(int pad)
     {
         //1 is added to the max of the pad because System.Random.Next()'s upper bound is exclusive
         return Maze[Rnd.Next(pad, MazeWidth - pad + 1), Rnd.Next(pad, MazeLength - pad + 1)];
     }
 
     //Returns an array of all the cells in a radius around a specified cell
-    MazeCell[] GetCellsInRadius(MazeCell center, int radius)
+    public MazeCell[] GetCellsInRadius(MazeCell center, int radius)
     {
         List<MazeCell> radiusCells = new List<MazeCell>();
         var c = center.Coordinate;
@@ -408,4 +421,9 @@ public class MazeGenerator : MonoBehaviour
         return radiusCells.ToArray();
     }
 }
+
+//This class is just a UnityEvent that can pass a float (or other data)
+//It passes information about maze generation parameters to its listeners
+[Serializable]
+public class MazeGenEvent : UnityEvent <float> {};
 

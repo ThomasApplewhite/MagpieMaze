@@ -79,6 +79,9 @@ public class NclidianController : MonoBehaviour
 
         connectedPortalReplace(PortalA, alphaRegion);
         connectedPortalReplace(PortalB, betaRegion);
+
+        //Update the list of portals the player knows about (make sure not to do this too often!)
+        GameObject.FindWithTag("Player").BroadcastMessage("UpdatePortalArray");
     }
 
     /*
