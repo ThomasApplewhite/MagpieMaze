@@ -1151,34 +1151,10 @@ MonoBehaviour:
   portalPairCount: 3
   OnGenerationBegin:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 377770104}
-        m_TargetAssemblyTypeName: SpawnRoom, Assembly-CSharp
-        m_MethodName: BeingSpawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnGenerationEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 377770104}
-        m_TargetAssemblyTypeName: SpawnRoom, Assembly-CSharp
-        m_MethodName: EndSpawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   ReplacerCell: {fileID: 2805008745139986505, guid: 8952224d7b8c0ea7ab323de4b634c093, type: 3}
   replacerSize: 3
 --- !u!4 &1467784972
@@ -1238,17 +1214,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481234afe0122b488ada9e77172339eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MazeLength: 10
-  MazeWidth: 10
-  MazeScale: 3
+  MazeLength: 1
+  MazeWidth: 8
+  MazeScale: 5
   MazeGenStepSize: 10
   generateMinotaur: 0
   playerSpawn: {x: 3, y: 1, z: 3}
   minotaurSpawn: {x: 66, y: 1, z: 66}
-  MazeCell: {fileID: 0}
-  MazeFloor: {fileID: 0}
+  MazeCell: {fileID: 2805008745139986505, guid: 749b26e20b5ee7679b32ec872a53c88e, type: 3}
+  MazeFloor: {fileID: 6867183488404060253, guid: de2d677bffa9cc9a5868529d4efd0995, type: 3}
   Minotaur: {fileID: 0}
-  Nclidian: {fileID: 0}
+  Nclidian: {fileID: 5302675751402586096, guid: a0edf8b0e9af38d96bc478cf4913fe33, type: 3}
   portalPairCount: 0
   OnGenerationBegin:
     m_PersistentCalls:
@@ -1503,7 +1479,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875039286}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.447}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 1291040662}

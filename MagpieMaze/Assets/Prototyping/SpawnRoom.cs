@@ -52,8 +52,8 @@ public class SpawnRoom : MonoBehaviour
         //Replace the farthest cell in the hallway and a random cell in the real maze with a portal
         MazeCell a = mazeProper.GetRandomCellWithPadding(3);    //random cell
         MazeCell b = hallway.MazeLength > hallway.MazeWidth ?   //farthest cell
-            hallway.GetCell(hallway.MazeLength, 0) : 
-            hallway.GetCell(0, hallway.MazeWidth);
+            hallway.GetCell(0, hallway.MazeLength - 1) : 
+            hallway.GetCell(hallway.MazeWidth - 1, 0);
 
         //Make the actual portals and do the actual replacement
         Instantiate(Nclidian).GetComponent<NclidianController>().PlacePortals(
