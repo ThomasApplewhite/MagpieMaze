@@ -16,20 +16,55 @@ using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    [Tooltip("Where tp place the player when they die")]
+    [Tooltip("Where to place the player when they die")]
     public Transform killLocation;
 
-    /*// Start is called before the first frame update
+    [Tooltip("The particle system to emiy footsteps from")]
+    public ParticleSystem footstepSystem;
+
+    [Tooltip("How long to delay footsteps for (bigger value = fewer footsteps")]
+    public int footstepDelay = 10;
+
+    //how far footsteps should be from the center of the player
+    private float footstepGap = 0.5f;
+
+    //the CharacterController component of the player
+    private CharacterController playerController;
+
+    //a delta value to add to every time the player moves
+    private int footstepDelta = 0;
+
+    //an alternator to determine a left or right footstep
+    private int footstepSide = 1;
+    
+
+    // Start is called before the first frame update
     void Start()
     {
-        
+        playerController = this.gameObject.GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }*/
+        if(playerController.velocity != Vector3.zero)
+        {
+            ++footstepDelta;
+
+            if(footstepDelta > footstepDelay)
+            {
+                var ep = new UnityEngine.ParticleSystem.EmitParams();
+                ep.position = 
+                    this.gameObject.transform.position -                //player pos
+                    new Vector3(0f, playerController.height/2, 0f) +    //offset to foot level;
+                    this.gameObject.transform.right * footstepGap * footstepSide;
+                footstepSide *= -1;
+                ep.rotation = this.gameObject.transform.rotation.eulerAngles.y;
+                footstepSystem.Emit(ep, 1);
+                footstepDelta = 0;
+            }
+        }
+    }
 
     public void Kill()
     {
