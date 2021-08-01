@@ -80,6 +80,12 @@ public class MazeCell : MonoBehaviour
     //If at least one of these cells is "in", the other will be "in" also
     public bool Connect(MazeCell otherCell)
     {
+        if(otherCell == null)
+        {
+            Debug.LogWarning("MazeCell.Connect: otherCell is null!");
+            return false;
+        }
+
         //this.Coordinate is second, so all of these checks will judge relative to this
         Vector2 compositeCoord = otherCell.Coordinate - this.Coordinate;
 
@@ -113,6 +119,12 @@ public class MazeCell : MonoBehaviour
     //If a cell is disconnected from all of its neighbors, it becomes "out" of the maze
     public bool Disconnect(MazeCell otherCell)
     {
+        if(otherCell == null)
+        {
+            Debug.LogWarning("MazeCell.Disconnect: otherCell is null!");
+            return false;
+        }
+
         //this.Coordinate is second, so all of these checks will judge relative to this
         Vector2 compositeCoord = otherCell.Coordinate - this.Coordinate;
 

@@ -33,7 +33,7 @@ public class SpawnRoom : MonoBehaviour
     [Tooltip("The NclidianController prefab")]
     public GameObject Nclidian;
 
-    //When the game starts (and the spawn process begins...)
+    /*//When the game starts (and the spawn process begins...)
     public void BeingSpawn()
     {
         //Move the player to the white room
@@ -59,5 +59,5 @@ public class SpawnRoom : MonoBehaviour
 
         //Move the player to the 0 0 cell of the hallway maze
         player.transform.position = hallway.GetCell(0, 0).anchorCoord;
-    }
+    }*/
 }

@@ -43,6 +43,18 @@ public class MazeNeighbors
         West = maze[c.x+1, c.y];
     }
 
+    //Determines the maze's neighbors by asking a Maze object
+    //Very fast as well, this is the best way to a MazeNeighbors this up
+    public MazeNeighbors(MazeCell center, Maze maze)
+    {
+        var c = center.Coordinate;
+        Owner = center;
+        North = maze.GetCell(c.x, c.y+1);
+        South = maze.GetCell(c.x, c.y-1);
+        East = maze.GetCell(c.x-1, c.y);
+        West = maze.GetCell(c.x+1, c.y);
+    }
+
     /*Determines the maze's neighbors by searching for each of them in an array
     A good bit slower, and can't tell the difference between a neighbor that isn't
     in the array and that doesn't exist at all, but works directly with radius stuff

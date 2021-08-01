@@ -17,105 +17,108 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-public class MazeGenerator : MonoBehaviour
+//alias to avoid name clash with object (the inherent C# type)
+using Uobj = UnityEngine.Object;
+
+[System.Serializable]
+public class MazeGenerator
 {
     [Header("Generation Parameters")]
     [Tooltip("How long the maze should be")]
-    public int MazeLength = 10;
+    public int mazeLength = 10;
     
     [Tooltip("How wide the maze should be")]
-    public int MazeWidth = 10;
+    public int mazeWidth = 10;
 
     [Tooltip("How big each cell should be")]
-    public float MazeScale = 3f;
+    public float mazeScale = 5f;
 
     [Tooltip("How many cells should be generated at a time (bigger number = faster but needs better computer)")]
-    public int MazeGenStepSize = 10;
+    public int mazeGenStepSize = 10;
 
     [Tooltip("Whether or not this maze should have a Minotaur")]
     public bool generateMinotaur = true;
 
     [Header("Spawn Parameters")]
-    [Tooltip("The location of the Player's spawn point")]
-    public Vector3 playerSpawn = new Vector3(3f, 1f, 3f);
-
-    //[Tooltip("The Player's spawn room")]
-    //public GameObject PlayerSpawnRoom;
-
     [Tooltip("The location of the Minotaur's spawn point")]
-    public Vector3 minotaurSpawn = new Vector3(66f, 1f, 66f);
+    public Vector2Int minotaurSpawn = new Vector2Int(6, 6);
 
     [Header("Prefab Parameters")]
     [Tooltip("The prefab of a Maze Cell")]
-    public GameObject MazeCell;
+    public GameObject mazeCell;
 
     [Tooltip("The prefab of the floor")]
-    public GameObject MazeFloor;
+    public GameObject mazeFloor;
 
     [Tooltip("The prefab of the Minotaur")]
-    public GameObject Minotaur;
+    public GameObject minotaur;
 
     [Tooltip("The Prefab of an Nclidian Duo")]
-    public GameObject Nclidian;
+    public GameObject nclidian;
 
     [Tooltip("The number of portal pairs that should be created in the maze")]
     public int portalPairCount;
 
     [Header("Generation Timing Events")]
-    public MazeGenEvent OnGenerationBegin;
-    public UnityEvent OnGenerationEnd;
-
-    [Header("Dev Parameters")]
-    [Tooltip("The prefab of a Replacer to just replace some things")]
-    public GameObject ReplacerCell;
-
-    [Tooltip("The size of the XbyX square that the above replacer cell takes up")]
-    public int replacerSize = 3;
+    public MazeGenEvent onGenerationBegin;
+    public UnityEvent onGenerationEnd;
 
     //The Array of MazeCells that make up the maze
-    public MazeCell[,] Maze { get; private set; }
+    public MazeCell[,] maze { get; private set; }
+
+    //The maze being generated
+    private Maze activeMaze;
 
     //The NavMesh of the floor
     private NavMeshSurface nav;
 
     //The random number generator, for random number things
-    private System.Random Rnd;
+    private System.Random rnd;
+    
 
     // Start is called before the first frame update
-    void Start()
+    public IEnumerator Generate(Maze mazeToGenerate)
     {
-        Maze = new MazeCell[MazeWidth, MazeLength];
-        Rnd = new System.Random();
+        activeMaze = mazeToGenerate;
+        maze = new MazeCell[mazeWidth, mazeLength];
+        rnd = new System.Random();
 
-        StartCoroutine(ComissionMaze());
-    }
-
-    /*
-    ---Notes about Maze Generation---
-    The origin cell is (0, 0), which is at 0, 0, 0 relative to the Maze parent object
-    X Coordinates increment Eastward
-    Y Coordinates increment Northward
-    */
-
-    ///GENERATION METHODS--------------------------------------------------------------------------
-    IEnumerator ComissionMaze()
-    {
         //Pass generation parameters to event listeners
         //Currently, this is just the MazeScale parameter
-        OnGenerationBegin.Invoke(MazeScale);
+        onGenerationBegin.Invoke(mazeScale);
 
+        yield return ComissionMaze();
+
+        //Save the maze. This is needed for generation steps that need the maze to be done
+        mazeToGenerate.mazeArray = maze;
+
+        yield return ComissionAddOns();
+
+        //Notifies other parts of the code that generation is done
+        onGenerationEnd.Invoke();
+    }
+
+    //Constructs the maze's floor and its walls, and carves out the actual structure
+    IEnumerator ComissionMaze()
+    {   
         BuildFloor();
 
-        yield return GenerateMaze(MazeGenStepSize);
-        yield return ConnectCells(MazeGenStepSize);
+        yield return GenerateMaze(mazeGenStepSize);
+        yield return ConnectCells(mazeGenStepSize);
 
         nav.BuildNavMesh();
+    }
 
+    //Constructs anything that needs the maze to exist first
+    //Currently doesn't need any yielding, but I'm leaving it
+    //an IEnumerator for now
+    IEnumerator ComissionAddOns()
+    {
         if(generateMinotaur) SpawnMinotaur();
 
         for(int i = 0; i < portalPairCount; ++i) SpawnPortals();
 
-        OnGenerationEnd.Invoke();
+        yield return null;
     }
 
     //The current scaling and positioning calculation use constants
@@ -128,19 +131,19 @@ public class MazeGenerator : MonoBehaviour
         float posScale = 2f;
 
         //Create the floor
-        var floor = Instantiate(MazeFloor, this.gameObject.transform);
+        var floor = Uobj.Instantiate(mazeFloor, activeMaze.gameObject.transform);
 
         //Scale and position the floor
         floor.transform.localScale = new Vector3(
-            MazeWidth * sizeScale,
+            mazeWidth * sizeScale,
             0.33f,
-            MazeLength * sizeScale
+            mazeLength * sizeScale
         );
 
         floor.transform.localPosition = new Vector3(
-            (floor.transform.localScale.x / posScale) - MazeScale,
+            (floor.transform.localScale.x / posScale) - mazeScale,
             1f,
-            (floor.transform.localScale.z / posScale) - MazeScale
+            (floor.transform.localScale.z / posScale) - mazeScale
         );
 
         //First-Pass Nav Mesh
@@ -152,24 +155,47 @@ public class MazeGenerator : MonoBehaviour
     {
         //For each (i, j) coordinate...
         int stepCount = 0;
-        for(int i = 0; i < MazeWidth; ++i)
+        for(int i = 0; i < mazeWidth; ++i)
         {
-            for(int j = 0; j < MazeLength; ++j)
+            for(int j = 0; j < mazeLength; ++j)
             {
                 //Make a new cell and add it to the maze array
                 var newcell = MakeCell(i, j);
-                Maze[i, j] = newcell;
+                maze[i, j] = newcell;
                 
                 //every stepCount cells, pause to let the engine catch up
                 ++stepCount;
                 if(stepCount > step)
                 {
                     //pause to let the engine render a frame
+                    //This is why the entire generation is a coroutine
                     yield return null;
                     stepCount = 0;
                 }
             }
         }
+    }
+
+    MazeCell MakeCell(int i, int j)
+    {
+        //create cell
+        var cell = Uobj.Instantiate(mazeCell, activeMaze.gameObject.transform);
+        var cellData = cell.GetComponent<MazeCell>();
+
+        //Move it to its spot
+        cell.transform.localPosition = new Vector3
+        (
+            (float)i * mazeScale * 1.5f,
+            0f,
+            (float)j * mazeScale * 1.5f
+        );
+
+        //scale it
+        cell.transform.localScale = cell.transform.localScale * mazeScale;
+
+        //initialize it
+        cellData.Initialize(new Vector2Int(i, j));
+        return cellData;
     }
 
     IEnumerator ConnectCells(int step)
@@ -180,15 +206,15 @@ public class MazeGenerator : MonoBehaviour
 
         //Step 0: Add a random to cell to the maze
         //This could be any cell, but for now I'm just gonna make it be (0,0)
-        inCells.Add(Maze[0, 0]);
-        MakeAllNeighborsFrontier(Maze[0,0], inCells, frontierCells);
+        inCells.Add(maze[0, 0]);
+        MakeAllNeighborsFrontier(maze[0,0], inCells, frontierCells);
 
         //Step 1: While there are frontier cells...
         int stepCount = 0;
         while(frontierCells.Count != 0)
         {
             //Step 1.1: Pick a random cell
-            MazeCell toConnect = frontierCells[Rnd.Next(frontierCells.Count)];
+            MazeCell toConnect = frontierCells[rnd.Next(frontierCells.Count)];
 
             //Step 1.2: Connect it to an "In" Neighbor
             ConnectToRandomNeighbor(toConnect, inCells);
@@ -222,7 +248,7 @@ public class MazeGenerator : MonoBehaviour
         {
             //Check if the cell at (x, y) exists and is in the maze
             //If so, mark it as a valid cell
-            if(IsValidCell(x, y) && inCells.Contains(Maze[x, y])) validCells.Add(Maze[x, y]);
+            if(IsValidCell(x, y) && inCells.Contains(maze[x, y])) validCells.Add(maze[x, y]);
         });
 
         //add all valid cells adjacent to the center cell
@@ -232,7 +258,7 @@ public class MazeGenerator : MonoBehaviour
         validate(c.x, c.y-1);
 
         //pick a random valid cell and connect to it
-        var otherCell = validCells[Rnd.Next(validCells.Count)];
+        var otherCell = validCells[rnd.Next(validCells.Count)];
         center.Connect(otherCell);    
     }
 
@@ -244,30 +270,9 @@ public class MazeGenerator : MonoBehaviour
         //that are adjacent to cells in the maze but are not themselves in the main
         Action<int, int> frontify = new Action<int, int>( (x, y) => 
         {
-            /*//If we're checking cells on the x axis...
-            if(dynamicX)
+            if(IsValidCell(x, y) && !inCells.Contains(maze[x, y]) && !frontierCells.Contains(maze[x, y]))
             {
-                //and such a cell exists and it isn't already in the maze or the frontier
-                if(IsValidCell(dyn, stat) && !inCells.Contains(Maze[dyn, stat]) 
-                    && !frontierCells.Contains(Maze[dyn, stat]))
-                {
-                    //add it to the frontier
-                    frontierCells.Add(Maze[dyn, stat]);
-                }
-            }
-            //Otherwise check as if the cell is on the x axis
-            else
-            {
-                if(IsValidCell(stat, dyn) && !inCells.Contains(Maze[stat, dyn]) 
-                    && !frontierCells.Contains(Maze[stat, dyn]))
-                {
-                    frontierCells.Add(Maze[stat, dyn]);
-                }
-            }*/
-
-            if(IsValidCell(x, y) && !inCells.Contains(Maze[x, y]) && !frontierCells.Contains(Maze[x, y]))
-            {
-                frontierCells.Add(Maze[x, y]);
+                frontierCells.Add(maze[x, y]);
             }
             
         });
@@ -277,42 +282,45 @@ public class MazeGenerator : MonoBehaviour
         frontify(c.x-1, c.y);
         frontify(c.x, c.y+1);
         frontify(c.x, c.y-1);
-
-        /*frontify(c.x+1, c.y, true);
-        frontify(c.x-1, c.y, true);
-        frontify(c.y+1, c.x, false);
-        frontify(c.y-1, c.x, false);*/
     }
 
-        MazeCell MakeCell(int i, int j)
+    //Simple bounds check on the array. Can C# do this automatically?
+    //Stolen helper from the regular Maze class 'cause it's too helpful
+    public bool IsValidCell(int i, int j)
     {
-        //create cell
-        var cell = Instantiate(MazeCell, this.gameObject.transform);
-        var cellData = cell.GetComponent<MazeCell>();
-
-        //Move it to its spot
-        cell.transform.localPosition = new Vector3
-        (
-            (float)i * MazeScale * 1.5f,
-            0f,
-            (float)j * MazeScale * 1.5f
-        );
-
-        //scale it
-        cell.transform.localScale = cell.transform.localScale * MazeScale;
-
-        //initialize it
-        cellData.Initialize(new Vector2Int(i, j));
-        return cellData;
+        return (i >= 0 && mazeWidth > i) && (j >= 0 && mazeLength > j);
     }
 
     //POINT-OF-INTEREST METHODS--------------------------------------------------------------------
     void SpawnMinotaur()
     {
-        Instantiate(Minotaur, minotaurSpawn, Quaternion.identity);
+        var spawnPos = activeMaze[minotaurSpawn.x, minotaurSpawn.y].anchorCoord;
+        Uobj.Instantiate(minotaur, spawnPos, Quaternion.identity);
     }
 
-    void SpawnMonolith()
+    void SpawnPortals()
+    {
+        //Get two random cells
+        //We need to do it directly because the width and length of activeMaze
+        //isn't set yet
+        //Pad is how far a portal should be from a wall
+        int pad = 2;
+        var randcell = new System.Func<MazeCell>
+        ( 
+            () => maze[rnd.Next(pad, mazeWidth - pad), rnd.Next(pad, mazeLength - pad)] 
+        );
+        var a = randcell();
+        var b = randcell();
+
+        //And make the portals idk it's not rocket science
+        Uobj.Instantiate(nclidian).GetComponent<NclidianController>().PlacePortals(
+            new MazeNeighbors(a, maze),
+            new MazeNeighbors(b, maze)
+        );
+    }
+
+    //These two methods are were left over from room replacer testing. They might get reused.
+    /*void SpawnMonolith()
     {
         //Pick a random cell
         MazeCell center = GetRandomCellWithPadding(replacerSize + 1);
@@ -344,78 +352,7 @@ public class MazeGenerator : MonoBehaviour
 
         //Initialize the spawn room
         GameObject.FindWithTag("Respawn").GetComponent<MazeCellReplacer>().Initialize(center, radius);
-    }
-
-    void SpawnPortals()
-    {
-        //Get two random cells
-        var a = GetRandomCellWithPadding(2);
-        var b = GetRandomCellWithPadding(2);
-
-        //And make the portals idk it's not rocket science
-        Instantiate(Nclidian).GetComponent<NclidianController>().PlacePortals(
-            new MazeNeighbors(a, Maze),
-            new MazeNeighbors(b, Maze)
-        );
-    }
-
-    ///HELPER METHODS------------------------------------------------------------------------------
-    //Simple bounds check on the array. Can C# do this automatically?
-    public bool IsValidCell(int i, int j)
-    {
-        return (i >= 0 && MazeWidth > i) && (j >= 0 && MazeLength > j);
-    }
-
-    public MazeCell GetCell(int x, int y)
-    {
-        return Maze[x, y];
-    }
-
-    //Returns a random cell in the maze
-    public MazeCell GetRandomCell()
-    {
-        return Maze[Rnd.Next(MazeWidth), Rnd.Next(MazeLength)];
-    }
-
-    //Returns a random cell in the maze that has at least pad many cells between it and the
-    //outside of the maze
-    public MazeCell GetRandomCellWithPadding(int pad)
-    {
-        //1 is added to the max of the pad because System.Random.Next()'s upper bound is exclusive
-        return Maze[Rnd.Next(pad, MazeWidth - pad + 1), Rnd.Next(pad, MazeLength - pad + 1)];
-    }
-
-    //Returns an array of all the cells in a radius around a specified cell
-    public MazeCell[] GetCellsInRadius(MazeCell center, int radius)
-    {
-        List<MazeCell> radiusCells = new List<MazeCell>();
-        var c = center.Coordinate;
-
-        //Step 1: get every cell on the same X or Y level as the center
-        for(int i = 1; i <= radius; ++i)
-        {
-            if(IsValidCell(c.x+i, c.y)) radiusCells.Add(Maze[c.x+i, c.y]);
-            if(IsValidCell(c.x-i, c.y)) radiusCells.Add(Maze[c.x-i, c.y]);
-            if(IsValidCell(c.x, c.y+i)) radiusCells.Add(Maze[c.x, c.y+i]);
-            if(IsValidCell(c.x, c.y-i)) radiusCells.Add(Maze[c.x, c.y-i]);
-        }
-
-        //Step 2: get every cell that isn't on the same X or Y level
-        for(int i = 1; i <= radius; ++i)
-        {
-            for(int j = 1; j <= radius; ++j)
-            {
-                if(IsValidCell(c.x+i, c.y+j)) radiusCells.Add(Maze[c.x+i, c.y+j]);
-                if(IsValidCell(c.x-i, c.y+j)) radiusCells.Add(Maze[c.x-i, c.y+j]);
-                if(IsValidCell(c.x+i, c.y-j)) radiusCells.Add(Maze[c.x+i, c.y-j]);
-                if(IsValidCell(c.x-i, c.y-j)) radiusCells.Add(Maze[c.x-i, c.y-j]);
-            }
-        }
-
-        //Step 3: return the cells as an array
-        //Keeping the radius as an array makes it easy to pass to a params argument
-        return radiusCells.ToArray();
-    }
+    }*/
 }
 
 //This class is just a UnityEvent that can pass a float (or other data)

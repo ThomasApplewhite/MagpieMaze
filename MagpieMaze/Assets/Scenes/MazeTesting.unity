@@ -368,8 +368,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 923979531}
   whiteRoom: {fileID: 84019070}
-  hallway: {fileID: 1546851817}
-  mazeProper: {fileID: 1467784971}
+  hallway:
+    mazeLength: 10
+    mazeWidth: 10
+    mazeScale: 3
+    mazeGenStepSize: 10
+    generateMinotaur: 1
+    minotaurSpawn: {x: 6, y: 6}
+    mazeCell: {fileID: 0}
+    mazeFloor: {fileID: 0}
+    minotaur: {fileID: 0}
+    nclidian: {fileID: 0}
+    portalPairCount: 0
+    onGenerationBegin:
+      m_PersistentCalls:
+        m_Calls: []
+    onGenerationEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  mazeProper:
+    mazeLength: 10
+    mazeWidth: 10
+    mazeScale: 3
+    mazeGenStepSize: 10
+    generateMinotaur: 1
+    minotaurSpawn: {x: 6, y: 6}
+    mazeCell: {fileID: 0}
+    mazeFloor: {fileID: 0}
+    minotaur: {fileID: 0}
+    nclidian: {fileID: 0}
+    portalPairCount: 0
+    onGenerationBegin:
+      m_PersistentCalls:
+        m_Calls: []
+    onGenerationEnd:
+      m_PersistentCalls:
+        m_Calls: []
   Nclidian: {fileID: 5302675751402586096, guid: a0edf8b0e9af38d96bc478cf4913fe33, type: 3}
 --- !u!1 &604495716
 GameObject:
@@ -6016,29 +6050,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1467784970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 481234afe0122b488ada9e77172339eb, type: 3}
+  m_Script: {fileID: 11500000, guid: b8675c64a8b372a76bab7d452a0c6b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MazeLength: 10
-  MazeWidth: 10
-  MazeScale: 5
-  MazeGenStepSize: 10
-  generateMinotaur: 1
-  playerSpawn: {x: 3, y: 2.5, z: 3}
-  minotaurSpawn: {x: 66, y: 2.5, z: 66}
-  MazeCell: {fileID: 2805008745139986505, guid: 749b26e20b5ee7679b32ec872a53c88e, type: 3}
-  MazeFloor: {fileID: 6867183488404060253, guid: 7d05b98ef87187b78b6593e629de4ac6, type: 3}
-  Minotaur: {fileID: 6798550303779021913, guid: 2153f3c364a4ba336bdbc3da3a6ba9d0, type: 3}
-  Nclidian: {fileID: 5302675751402586096, guid: a0edf8b0e9af38d96bc478cf4913fe33, type: 3}
-  portalPairCount: 1
-  OnGenerationBegin:
-    m_PersistentCalls:
-      m_Calls: []
-  OnGenerationEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  ReplacerCell: {fileID: 2805008745139986505, guid: 8952224d7b8c0ea7ab323de4b634c093, type: 3}
-  replacerSize: 3
+  generateOnStart: 1
+  mazeSettings:
+    mazeLength: 10
+    mazeWidth: 10
+    mazeScale: 5
+    mazeGenStepSize: 10
+    generateMinotaur: 1
+    minotaurSpawn: {x: 6, y: 6}
+    mazeCell: {fileID: 2805008745139986505, guid: 749b26e20b5ee7679b32ec872a53c88e, type: 3}
+    mazeFloor: {fileID: 6867183488404060253, guid: 7d05b98ef87187b78b6593e629de4ac6, type: 3}
+    minotaur: {fileID: 6798550303779021913, guid: 2153f3c364a4ba336bdbc3da3a6ba9d0, type: 3}
+    nclidian: {fileID: 5302675751402586096, guid: a0edf8b0e9af38d96bc478cf4913fe33, type: 3}
+    portalPairCount: 2
+    onGenerationBegin:
+      m_PersistentCalls:
+        m_Calls: []
+    onGenerationEnd:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!4 &1467784972
 Transform:
   m_ObjectHideFlags: 0
@@ -6093,29 +6126,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1546851815}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 481234afe0122b488ada9e77172339eb, type: 3}
+  m_Script: {fileID: 11500000, guid: b8675c64a8b372a76bab7d452a0c6b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MazeLength: 1
-  MazeWidth: 8
-  MazeScale: 5
-  MazeGenStepSize: 10
-  generateMinotaur: 0
-  playerSpawn: {x: 3, y: 1, z: 3}
-  minotaurSpawn: {x: 66, y: 1, z: 66}
-  MazeCell: {fileID: 2805008745139986505, guid: 749b26e20b5ee7679b32ec872a53c88e, type: 3}
-  MazeFloor: {fileID: 6867183488404060253, guid: de2d677bffa9cc9a5868529d4efd0995, type: 3}
-  Minotaur: {fileID: 0}
-  Nclidian: {fileID: 5302675751402586096, guid: a0edf8b0e9af38d96bc478cf4913fe33, type: 3}
-  portalPairCount: 0
-  OnGenerationBegin:
-    m_PersistentCalls:
-      m_Calls: []
-  OnGenerationEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  ReplacerCell: {fileID: 0}
-  replacerSize: 3
+  generateOnStart: 0
+  mazeSettings:
+    mazeLength: 1
+    mazeWidth: 8
+    mazeScale: 5
+    mazeGenStepSize: 10
+    generateMinotaur: 1
+    minotaurSpawn: {x: 6, y: 6}
+    mazeCell: {fileID: 2805008745139986505, guid: 749b26e20b5ee7679b32ec872a53c88e, type: 3}
+    mazeFloor: {fileID: 6867183488404060253, guid: 7d05b98ef87187b78b6593e629de4ac6, type: 3}
+    minotaur: {fileID: 0}
+    nclidian: {fileID: 5302675751402586096, guid: a0edf8b0e9af38d96bc478cf4913fe33, type: 3}
+    portalPairCount: 0
+    onGenerationBegin:
+      m_PersistentCalls:
+        m_Calls: []
+    onGenerationEnd:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1672159146
 GameObject:
   m_ObjectHideFlags: 0
