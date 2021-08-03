@@ -45,6 +45,14 @@ public class MazeCell : MonoBehaviour
             return compositePos / 4f;
         }
     }
+
+    public enum WallDirection
+    {
+        NORTH,
+        SOUTH,
+        EAST,
+        WEST
+    }
     
     //These two methods connect or disconnect two cells at a shared side
     private static bool SyncWallNorthSouth(MazeCell North, MazeCell South, bool wallState)
@@ -58,6 +66,11 @@ public class MazeCell : MonoBehaviour
             {
                 North.SouthConnection = South;
                 South.NorthConnection = North;
+            }
+            else
+            {
+                North.SouthConnection = null;
+                South.NorthConnection = null;
             }
 
             return true;
@@ -81,6 +94,11 @@ public class MazeCell : MonoBehaviour
                 East.WestConnection = West;
                 West.EastConnection = East;
             }
+            else
+            {
+                East.WestConnection = null;
+                West.EastConnection = null;
+            }
             return true;
         }
         else
@@ -93,6 +111,28 @@ public class MazeCell : MonoBehaviour
     public virtual void Initialize(Vector2Int coord)
     {
         this.Coordinate = coord;
+    }
+
+    public bool IsConnected(WallDirection dir)
+    {
+        switch(dir)
+        {
+            case WallDirection.NORTH:
+                return NorthConnection != null;
+
+            case WallDirection.SOUTH:
+                return SouthConnection != null;
+
+            case WallDirection.EAST:
+                return EastConnection != null;
+            
+            case WallDirection.WEST:
+                return WestConnection != null;
+            
+            default:
+                Debug.LogError("MazeCell.IsConnected: Invalid WallDirection!");
+                return false;
+        }
     }
 
     //Makes this cell and otherCell connect by destroying the walls between them

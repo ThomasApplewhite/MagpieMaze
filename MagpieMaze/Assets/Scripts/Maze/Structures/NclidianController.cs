@@ -43,20 +43,23 @@ public class NclidianController : MonoBehaviour
 
     void DirectPortalReplacement(GameObject portal, MazeNeighbors region)
     {
-        //First, disconnect all of the original cell's neighbors
-        region.Owner.DisconnectAll();
-
         //deparent the portal and do the replacement
-        var portalCell = portal.GetComponent<MazeCellReplacer>();
+        var portalCell = portal.GetComponent<PortalReplacer>();
         portal.transform.parent = region.Owner.gameObject.transform.parent;
         portalCell.Initialize(region.Owner);
 
         //Then assume all of the replaced cell's connections
         portalCell.CopyConnections(region.Owner);
+
+        //Then align the portal with at least one of them
+        portalCell.AlignPortalWithAnyConnection();
     }
 
     void RandomPortalReplacement(GameObject portal, MazeNeighbors region)
     {
+        //First, disconnect all of the original cell's neighbors
+        region.Owner.DisconnectAll();
+
         //deparent the portal and do the replacement
         var portalCell = portal.GetComponent<MazeCellReplacer>();
         portal.transform.parent = region.Owner.gameObject.transform.parent;
@@ -83,14 +86,4 @@ public class NclidianController : MonoBehaviour
                 break;
         }
     }
-
-    /*
-    Current brain-thinks on the portal problem
-        Each portal cell has 1 portal. How can the portal be aligned such that this portal is accesible
-        Wait hold on just remove all of the walls of a portal cell and connect with a random number
-            of cells (including the north wall so the portal is always accessible both ways)
-        The issue that this leaves is that portals will always be on the "north" wall of a cell
-        Hopefully, players simply won't notice
-        And yeah I can just pad to make sure portals dont go directly to the boundires of a maze
-    */
 }

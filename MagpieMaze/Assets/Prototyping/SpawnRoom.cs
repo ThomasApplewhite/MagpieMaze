@@ -64,8 +64,9 @@ public class SpawnRoom : MonoBehaviour
             NclidianController.ReplacementState.DIRECT
         );
 
+        Debug.Log($"Teleporting player to {hallway.GetCell(0, 0).anchorCoord}");
         //Move the player to the 0 0 cell of the hallway maze
-        player.transform.position = hallway.GetCell(0, 0).anchorCoord;
+        player.transform.SetPositionAndRotation(hallway.GetCell(0, 0).anchorCoord, Quaternion.identity);
 
         //that's it, for now
     }
