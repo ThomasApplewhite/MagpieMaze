@@ -92,7 +92,6 @@ public class Maze : MonoBehaviour
     //The same as indexing the maze, but returns null on invalid indicies
     public MazeCell GetCell(int x, int y)
     {
-        Debug.Log($"{x},{y} valid? {IsValidCell(x,y)}. Exists? {(IsValidCell(x,y) && mazeArray[x, y] != null ? "yes" : "no")}");
         return IsValidCell(x, y) ? mazeArray[x, y] : null;
     }
 
