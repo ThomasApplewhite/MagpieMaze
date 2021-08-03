@@ -60,7 +60,7 @@ public class SpawnRoom : MonoBehaviour
         Instantiate(Nclidian).GetComponent<NclidianController>().PlacePortals(
             new MazeNeighbors(a, mazeProper),
             new MazeNeighbors(b, hallway),
-            NclidianController.ReplacementState.RANDOM,
+            NclidianController.ReplacementState.OPEN,
             NclidianController.ReplacementState.DIRECT
         );
 
