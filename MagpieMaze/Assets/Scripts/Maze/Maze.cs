@@ -73,13 +73,13 @@ public class Maze : MonoBehaviour
     {
         initialized = MazeStatus.GENERATING;
 
-        yield return settings.Generate(this);
-
         //I'd set these in the generator, but IEnumerators
         //don't allow out parameters.
         this.width = settings.mazeWidth;
         this.length = settings.mazeLength;
-        
+
+        yield return settings.Generate(this);
+
         initialized = MazeStatus.GENERATED;
     }
 
@@ -92,6 +92,7 @@ public class Maze : MonoBehaviour
     //The same as indexing the maze, but returns null on invalid indicies
     public MazeCell GetCell(int x, int y)
     {
+        Debug.Log($"{x},{y} valid? {IsValidCell(x,y)}. Exists? {(IsValidCell(x,y) && mazeArray[x, y] != null ? "yes" : "no")}");
         return IsValidCell(x, y) ? mazeArray[x, y] : null;
     }
 

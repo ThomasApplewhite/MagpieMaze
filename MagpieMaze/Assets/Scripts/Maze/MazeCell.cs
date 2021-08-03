@@ -24,6 +24,12 @@ public class MazeCell : MonoBehaviour
     //This cell's coordinates in its maze
     public Vector2Int Coordinate { get; protected set; }
 
+    //This cell's connections
+    public MazeCell NorthConnection { get; private set; }
+    public MazeCell SouthConnection { get; private set; }
+    public MazeCell EastConnection { get; private set; }
+    public MazeCell WestConnection { get; private set; }
+
     //This cell's approximate coordinate in world space
     //The player can be placed at this position to be in this cell
     public Vector3 anchorCoord {
@@ -47,6 +53,13 @@ public class MazeCell : MonoBehaviour
         {
             North.SouthWall?.SetActive(wallState);
             South.NorthWall?.SetActive(wallState);
+            //If the walls are going away, then the cells are getting connected
+            if(!wallState)
+            {
+                North.SouthConnection = South;
+                South.NorthConnection = North;
+            }
+
             return true;
         }
         else
@@ -62,6 +75,12 @@ public class MazeCell : MonoBehaviour
         {
             East.WestWall?.SetActive(wallState);
             West.EastWall?.SetActive(wallState);
+            //If the walls are going away, then the cells are getting connected
+            if (!wallState)
+            {
+                East.WestConnection = West;
+                West.EastConnection = East;
+            }
             return true;
         }
         else
@@ -82,7 +101,7 @@ public class MazeCell : MonoBehaviour
     {
         if(otherCell == null)
         {
-            Debug.LogWarning("MazeCell.Connect: otherCell is null!");
+            Debug.LogWarning($"MazeCell{Coordinate}.Connect: otherCell is null!");
             return false;
         }
 
@@ -121,7 +140,7 @@ public class MazeCell : MonoBehaviour
     {
         if(otherCell == null)
         {
-            Debug.LogWarning("MazeCell.Disconnect: otherCell is null!");
+            Debug.LogWarning($"MazeCell{Coordinate}.Disconnect: otherCell is null!");
             return false;
         }
 
@@ -152,5 +171,23 @@ public class MazeCell : MonoBehaviour
         }
 
         return true;
+    }
+
+    //Disconnects a cell from all of its connections
+    public void DisconnectAll()
+    {
+        this.Disconnect(this.NorthConnection);
+        this.Disconnect(this.SouthConnection);
+        this.Disconnect(this.EastConnection);
+        this.Disconnect(this.WestConnection);
     }     
+
+    //Connects a cell to all of copiedCell's connections
+    public void CopyConnections(MazeCell copiedCell)
+    {
+        this.Connect(copiedCell.NorthConnection);
+        this.Connect(copiedCell.SouthConnection);
+        this.Connect(copiedCell.EastConnection);
+        this.Connect(copiedCell.WestConnection);
+    }
 }

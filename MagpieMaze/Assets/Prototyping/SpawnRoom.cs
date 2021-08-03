@@ -24,40 +24,49 @@ public class SpawnRoom : MonoBehaviour
     public MazeCell whiteRoom;
 
     [Tooltip("The Maze of the starting Hallway")]
-    public MazeGenerator hallway;
+    public Maze hallway;
 
     [Tooltip("The actual Maze itself")]
-    public MazeGenerator mazeProper;
+    public Maze mazeProper;
 
     [Header("Prefab GameObjects")]
     [Tooltip("The NclidianController prefab")]
     public GameObject Nclidian;
 
-    /*//When the game starts (and the spawn process begins...)
-    public void BeingSpawn()
+    void Start()
+    {
+        StartCoroutine(BeingSpawnProcess());
+    }
+
+    //When the game starts (and the spawn process begins...)
+    IEnumerator BeingSpawnProcess()
     {
         //Move the player to the white room
         player.transform.position = whiteRoom.anchorCoord;
 
-        //that's it, for now
-    }
+        //wait for the hallway and the maze to be ready
+        yield return new WaitUntil( () => 
+            mazeProper.initialized == Maze.MazeStatus.GENERATED && 
+            hallway.initialized == Maze.MazeStatus.GENERATED
+        );
 
-    //When the actual maze is ready...
-    public void EndSpawn()
-    {
         //Replace the farthest cell in the hallway and a random cell in the real maze with a portal
         MazeCell a = mazeProper.GetRandomCellWithPadding(3);    //random cell
-        MazeCell b = hallway.MazeLength > hallway.MazeWidth ?   //farthest cell
-            hallway.GetCell(0, hallway.MazeLength - 1) : 
-            hallway.GetCell(hallway.MazeWidth - 1, 0);
+        MazeCell b = hallway.length > hallway.width ?   //farthest cell
+            hallway.GetCell(0, hallway.length - 1) : 
+            hallway.GetCell(hallway.width - 1, 0);
 
         //Make the actual portals and do the actual replacement
         Instantiate(Nclidian).GetComponent<NclidianController>().PlacePortals(
-            new MazeNeighbors(a, mazeProper.Maze),
-            new MazeNeighbors(b, hallway.Maze)
+            new MazeNeighbors(a, mazeProper),
+            new MazeNeighbors(b, hallway),
+            NclidianController.ReplacementState.RANDOM,
+            NclidianController.ReplacementState.DIRECT
         );
 
         //Move the player to the 0 0 cell of the hallway maze
         player.transform.position = hallway.GetCell(0, 0).anchorCoord;
-    }*/
+
+        //that's it, for now
+    }
 }
