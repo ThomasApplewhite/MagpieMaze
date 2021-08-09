@@ -987,6 +987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9075744978211954596}
   - component: {fileID: 9075744978211954598}
+  - component: {fileID: 667299015266441460}
   - component: {fileID: 9075744978211954597}
   m_Layer: 0
   m_Name: DialogueInstance
@@ -1024,6 +1025,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &667299015266441460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9075744978211954603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00076b904a8b37848bd0400bddf1c18d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDialogue: {fileID: 2480198943629176163, guid: d549ec77f257ad9f8a547975dd3b04f4, type: 3}
+  startingNode: Start
+  canvas: {fileID: 9075744976715217948}
+  initiateTime: 0.5
 --- !u!114 &9075744978211954597
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Yarn.Unity;
 
 [RequireComponent(typeof(Collider))]
@@ -14,6 +15,11 @@ public class DialogueInitiator : MonoBehaviour
     public string startingNode = "Start";
 
     [Header("Other Settings")]
+    [Tooltip("The canvas to display dialogue text on for this character")]
+    //Normally this would be pulled directly via GetComponentInChildren, but that method can only find
+    //components on active game objects, and yarnspinner UI starts the scene inactive
+    public Canvas canvas;
+
     [Tooltip("How many seconds it should take for the camera to rotate towards the dialogue UI")]
     public float initiateTime = 0.5f;
 
@@ -23,14 +29,17 @@ public class DialogueInitiator : MonoBehaviour
     //the dialogueUI for this Initiator instance
     private DialogueUI dialogueUI;
 
-    //the player, for ease of communication
+    //the player, for ease of use
     private GameObject player;
+
+    //the player's camera, for ease of use
+    private GameObject playerCamera;
 
     // Start is called before the first frame update
     void Start()
     {
         //locate the dialogueUI
-        if(this.gameObject.TryGetComponent<DialogueUI>(out dialogueUI))
+        if(this.gameObject.TryGetComponent(out dialogueUI))
         {
             //If it's there, subscribe DeactiveDialogue to OnDialogueEnd
             dialogueUI.onDialogueEnd.AddListener( () => DeactivateDialogue() );
@@ -63,6 +72,17 @@ public class DialogueInitiator : MonoBehaviour
             //If it isn't there, raise an error
             Debug.LogError($"{this.gameObject.name}.DialogueInitiator.Start: Player not found!");
         }
+
+        //locate the camera
+        if( (playerCamera = GameObject.FindWithTag("MainCamera")) != null)
+        {
+            //If it's there, assign the actual camera component to the UI's canvas events
+            canvas.worldCamera = playerCamera.GetComponent<Camera>();
+        }
+        else
+        {
+            Debug.LogError($"{this.gameObject.name}.DialogueInitiator.Start: Camera not found!");
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -83,8 +103,7 @@ public class DialogueInitiator : MonoBehaviour
         //Step 2: Lerp the player's camera towards the current speaker
         //and
         //Step 3: Lerp the UI towards the camera
-        StartCoroutine(LerpToCenterDialogue(dialogueUI.gameObject.transform, 
-            GameObject.FindWithTag("MainCamera").transform));
+        StartCoroutine(LerpToCenterDialogue(dialogueUI.gameObject.transform, playerCamera.transform));
 
         //Step 4: Set the approprite speaker UI
         dialogueRunner.dialogueUI = dialogueUI;

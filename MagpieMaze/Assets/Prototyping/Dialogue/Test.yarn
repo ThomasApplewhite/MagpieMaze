@@ -1,0 +1,44 @@
+title: Start
+tags: 
+colorID: 6
+position: 685,-12
+---
+Hey loser this is the uhhhh first line
+Is that clear?
+Alright I'm gonna switch the nodes now
+[[Middle]]
+===
+title: Middle
+tags: 
+colorID: 6
+position: 679,285
+---
+Okay, nodes switched.
+Say, do you wanna go left or right?
+[[uhhh left|Left]]
+[[Right.|Right]]
+===
+title: Left
+tags: 
+colorID: 0
+position: 321,381
+---
+Alright you've gone left
+[[End]]
+===
+title: Right
+tags: 
+colorID: 0
+position: 1059,363
+---
+Hey cool you've gone right
+[[End]]
+===
+title: End
+tags: 
+colorID: 0
+position: 698,548
+---
+Alright we're done now.
+See ya!
+===
