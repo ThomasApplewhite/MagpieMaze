@@ -1038,7 +1038,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueContainer: {fileID: 9075744976715217921}
   textSpeed: 0.025
-  optionButtons: []
+  optionButtons:
+  - {fileID: 9075744976684548513}
+  - {fileID: 9075744977967928991}
+  - {fileID: 9075744978211861064}
+  - {fileID: 9075744977073806973}
   onDialogueStart:
     m_PersistentCalls:
       m_Calls: []
