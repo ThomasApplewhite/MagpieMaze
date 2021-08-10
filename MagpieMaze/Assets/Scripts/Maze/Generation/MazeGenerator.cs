@@ -311,7 +311,7 @@ public class MazeGenerator
     void SpawnCassandra()
     {
         var spawnPos = activeMaze[cassandraSpawn.x, cassandraSpawn.y].anchorCoord;
-        Uobj.Instantiate(cassandra, spawnPos, Quaternion.identity).SendMessage("BeginWander", activeMaze);
+        Uobj.Instantiate(cassandra, spawnPos, Quaternion.identity).GetComponentInChildren<Cassandra>().BeginWander(activeMaze);
     }
 
     void SpawnPortals()

@@ -27,9 +27,9 @@ public class Cassandra : MonoBehaviour
     private NavMeshAgent agent;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = this.gameObject.GetComponent<NavMeshAgent>();
 
         StartCoroutine(PathReset());
     }
@@ -38,6 +38,8 @@ public class Cassandra : MonoBehaviour
     IEnumerator PathReset()
     {
         yield return new WaitUntil( () => agent.pathStatus == NavMeshPathStatus.PathComplete);
+
+        Debug.Log($"{this.gameObject.name}.Cassandra.PathReset: Path Complete. Restarting wander...");
 
         BeginWander();
     }
