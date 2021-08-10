@@ -462,11 +462,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a034eb095d57e7038a8aaf3d4ff67496, type: 3}
---- !u!223 &1020631688 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 9075744976715217948, guid: c9ad22f761b979541a992cebeb8efa93, type: 3}
-  m_PrefabInstance: {fileID: 9075744977203032108}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1147350920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9075744978211954596, guid: c9ad22f761b979541a992cebeb8efa93, type: 3}
@@ -648,10 +643,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1757461611}
     m_Modifications:
-    - target: {fileID: 667299015266441460, guid: c9ad22f761b979541a992cebeb8efa93, type: 3}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 1020631688}
     - target: {fileID: 9075744977737913106, guid: c9ad22f761b979541a992cebeb8efa93, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
