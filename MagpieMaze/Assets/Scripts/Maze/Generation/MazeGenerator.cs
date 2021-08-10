@@ -39,9 +39,15 @@ public class MazeGenerator
     [Tooltip("Whether or not this maze should have a Minotaur")]
     public bool generateMinotaur = true;
 
+    [Tooltip("Whether or not this maze should have a Cassandra")]
+    public bool generateCassandra = false;
+
     [Header("Spawn Parameters")]
     [Tooltip("The location of the Minotaur's spawn point")]
     public Vector2Int minotaurSpawn = new Vector2Int(6, 6);
+
+    [Tooltip("The location of Cassandra's spawn point")]
+    public Vector2Int cassandraSpawn = new Vector2Int(3, 3);
 
     [Header("Prefab Parameters")]
     [Tooltip("The prefab of a Maze Cell")]
@@ -52,6 +58,9 @@ public class MazeGenerator
 
     [Tooltip("The prefab of the Minotaur")]
     public GameObject minotaur;
+
+    [Tooltip("The prefab of Cassandra")]
+    public GameObject cassandra;
 
     [Tooltip("The Prefab of an Nclidian Duo")]
     public GameObject nclidian;
@@ -115,6 +124,7 @@ public class MazeGenerator
     IEnumerator ComissionAddOns()
     {
         if(generateMinotaur) SpawnMinotaur();
+        if(generateCassandra) SpawnCassandra();
 
         for(int i = 0; i < portalPairCount; ++i) SpawnPortals();
 
@@ -262,7 +272,7 @@ public class MazeGenerator
         center.Connect(otherCell);    
     }
 
-        void MakeAllNeighborsFrontier(MazeCell center, List<MazeCell> inCells, List<MazeCell> frontierCells)
+    void MakeAllNeighborsFrontier(MazeCell center, List<MazeCell> inCells, List<MazeCell> frontierCells)
     {
         Vector2Int c = center.Coordinate;
 
@@ -296,6 +306,12 @@ public class MazeGenerator
     {
         var spawnPos = activeMaze[minotaurSpawn.x, minotaurSpawn.y].anchorCoord;
         Uobj.Instantiate(minotaur, spawnPos, Quaternion.identity);
+    }
+
+    void SpawnCassandra()
+    {
+        var spawnPos = activeMaze[cassandraSpawn.x, cassandraSpawn.y].anchorCoord;
+        Uobj.Instantiate(cassandra, spawnPos, Quaternion.identity).SendMessage("BeginWander", activeMaze);
     }
 
     void SpawnPortals()
