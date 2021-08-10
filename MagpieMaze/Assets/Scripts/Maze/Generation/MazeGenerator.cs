@@ -123,10 +123,10 @@ public class MazeGenerator
     //an IEnumerator for now
     IEnumerator ComissionAddOns()
     {
-        if(generateMinotaur) SpawnMinotaur();
-        if(generateCassandra) SpawnCassandra();
-
         for(int i = 0; i < portalPairCount; ++i) SpawnPortals();
+
+        if (generateMinotaur) SpawnMinotaur();
+        if (generateCassandra) SpawnCassandra();
 
         yield return null;
     }

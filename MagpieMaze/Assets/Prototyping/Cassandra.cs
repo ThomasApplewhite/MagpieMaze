@@ -20,6 +20,9 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Collider))]
 public class Cassandra : MonoBehaviour
 {
+    [Tooltip("How close to her selected wander point Cassandra needs to be before picking a new wander point")]
+    public float wanderDestinationCuttoff = 1f;
+
     //The maze that Cassandra is wandering
     private Maze maze;
 
@@ -37,11 +40,15 @@ public class Cassandra : MonoBehaviour
     //Tells Cassandra to find a new place to go to every time she finishes a wander
     IEnumerator PathReset()
     {
-        yield return new WaitUntil( () => agent.pathStatus == NavMeshPathStatus.PathComplete);
+        while(true)
+        {
+            yield return new WaitWhile( () => agent.pathPending );
+            yield return new WaitUntil( () => agent.remainingDistance <= wanderDestinationCuttoff );
 
-        Debug.Log($"{this.gameObject.name}.Cassandra.PathReset: Path Complete. Restarting wander...");
+            Debug.Log($"{this.gameObject.name}.Cassandra.PathReset: Path Complete. Restarting wander...");
 
-        BeginWander();
+            BeginWander();
+        }
     }
 
     public void BeginWander()
@@ -69,6 +76,8 @@ public class Cassandra : MonoBehaviour
             }
         }
 
+        //var destination = wanderMaze.GetRandomCell().anchorCoord;
+        //Debug.Log($"{this.gameObject.name}.Cassandra.BeginWander: Wandering to {destination}");
         agent.SetDestination(wanderMaze.GetRandomCell().anchorCoord);
     }
 }
