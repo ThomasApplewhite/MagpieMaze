@@ -36,7 +36,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1535381019623673784, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1535381019623673784, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
       propertyPath: m_TagString
@@ -102,6 +102,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.54
       objectReference: {fileID: 0}
+    - target: {fileID: 1921746335030134776, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1217749388358971600}
     - target: {fileID: 1921746335030134776, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -176,5 +180,10 @@ MonoBehaviour:
 --- !u!1 &1217749388358971602 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1535381020191089684, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
+  m_PrefabInstance: {fileID: 407739021369283782}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1217749388358971600 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1535381020191089686, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
   m_PrefabInstance: {fileID: 407739021369283782}
   m_PrefabAsset: {fileID: 0}
