@@ -15,10 +15,10 @@ public class DialogueInitiator : MonoBehaviour
     public string startingNode = "Start";
 
     [Header("Other Settings")]
-    [Tooltip("The canvas to display dialogue text on for this character")]
+    //[Tooltip("The canvas to display dialogue text on for this character")]
     //Normally this would be pulled directly via GetComponentInChildren, but that method can only find
     //components on active game objects, and yarnspinner UI starts the scene inactive
-    public Canvas canvas;
+    //public Canvas canvas;
 
     [Tooltip("How many seconds it should take for the camera to rotate towards the dialogue UI")]
     public float initiateTime = 0.5f;
@@ -39,7 +39,7 @@ public class DialogueInitiator : MonoBehaviour
     void Start()
     {
         //locate the dialogueUI
-        if(this.gameObject.TryGetComponent(out dialogueUI))
+        if(GameObject.FindWithTag("DialogueRunner")?.TryGetComponent<DialogueUI>(out dialogueUI) == true)
         {
             //If it's there, subscribe DeactiveDialogue to OnDialogueEnd
             dialogueUI.onDialogueEnd.AddListener( () => DeactivateDialogue() );
@@ -77,7 +77,7 @@ public class DialogueInitiator : MonoBehaviour
         if( (playerCamera = GameObject.FindWithTag("MainCamera")) != null)
         {
             //If it's there, assign the actual camera component to the UI's canvas events
-            canvas.worldCamera = playerCamera.GetComponent<Camera>();
+            //canvas.worldCamera = playerCamera.GetComponent<Camera>();
         }
         else
         {
@@ -103,10 +103,10 @@ public class DialogueInitiator : MonoBehaviour
         //Step 2: Lerp the player's camera towards the current speaker
         //and
         //Step 3: Lerp the UI towards the camera
-        StartCoroutine(LerpToCenterDialogue(dialogueUI.gameObject.transform, playerCamera.transform));
+        StartCoroutine(LerpToCenterDialogue(this.gameObject.transform, playerCamera.transform));
 
         //Step 4: Set the approprite speaker UI
-        dialogueRunner.dialogueUI = dialogueUI;
+        //dialogueRunner.dialogueUI = dialogueUI;
 
         //Step 5: Start the dialogue for real
         dialogueRunner.StartDialogue(startingNode);
