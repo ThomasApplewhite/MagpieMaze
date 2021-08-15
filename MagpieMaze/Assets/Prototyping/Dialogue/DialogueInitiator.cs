@@ -35,6 +35,9 @@ public class DialogueInitiator : MonoBehaviour
     //the player's camera, for ease of use
     private GameObject playerCamera;
 
+    //The direction the speaker is facing before the dialogue starts
+    private Vector3 originalForward;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,6 +102,7 @@ public class DialogueInitiator : MonoBehaviour
     void ActivateDialogue()
     {
         //Step 1: Stop all NPC and player movement
+        foreach(FreezableNPC npc in FindObjectsOfType<FreezableNPC>()) npc.Freeze();
 
         //Step 2: Lerp the player's camera towards the current speaker
         //and
@@ -131,6 +135,9 @@ public class DialogueInitiator : MonoBehaviour
         Vector3 camForward = playerCamera.forward;
         Vector3 uiForward = ui.forward;
 
+        //finally, save the speaker's original forward
+        originalForward = this.gameObject.transform.forward;
+
         //While the maximum initialization time hasn't passed...
         var timePassed = 0f;
         while(timePassed < initiateTime)
@@ -155,7 +162,10 @@ public class DialogueInitiator : MonoBehaviour
     void DeactivateDialogue()
     {
         //Step 1: Unstop all NPC and player movement
+        //Well... just the player for now
+        foreach (FreezableNPC npc in FindObjectsOfType<FreezableNPC>()) npc.Unfreeze();
 
-        //Step 2: Restore the rotation of the UI Canvas
+        //Step 2: Restore the rotation of the speaker
+        this.gameObject.transform.forward = originalForward;
     }
 }
