@@ -16,6 +16,11 @@ using UnityEngine;
 
 public class SpawnRoom : MonoBehaviour
 {
+    [Header("Intro Settings")]
+    [Tooltip("The minimum amount of time between arriving in the spawn room and going into " +
+        " the maze (ingame may take longer, but never shorter")]
+    public float startDelay = 3f;
+
     [Header("Instance GameObjects")]
     [Tooltip("The player's GameObject")]
     public GameObject player;
@@ -44,6 +49,8 @@ public class SpawnRoom : MonoBehaviour
         //Move the player to the white room
         player.transform.position = whiteRoom.anchorCoord;
 
+        //wait a little time...
+        yield return new WaitForSeconds(startDelay);
         //wait for the hallway and the maze to be ready
         yield return new WaitUntil( () => 
             mazeProper.initialized == Maze.MazeStatus.GENERATED && 
@@ -66,7 +73,13 @@ public class SpawnRoom : MonoBehaviour
 
         Debug.Log($"Teleporting player to {hallway.GetCell(0, 0).anchorCoord}");
         //Move the player to the 0 0 cell of the hallway maze
+        //Because the player uses a character controller, and because character controllers override
+        //unexpected movement changes, it needs to be turned off before the teleport can be done,
+        //and turned back on afterwards
+        var cont = player.GetComponent<CharacterController>();
+        cont.enabled = false;
         player.transform.SetPositionAndRotation(hallway.GetCell(0, 0).anchorCoord, Quaternion.identity);
+        cont.enabled = true;
 
         //that's it, for now
     }
