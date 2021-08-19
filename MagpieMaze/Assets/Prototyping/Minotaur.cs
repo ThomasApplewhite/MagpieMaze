@@ -41,7 +41,7 @@ public class Minotaur : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        agent.SetDestination(player.transform.position);
+        if(agent.enabled) agent.SetDestination(player.transform.position);
     }
 
     void OnCollisionEnter(Collision collided)

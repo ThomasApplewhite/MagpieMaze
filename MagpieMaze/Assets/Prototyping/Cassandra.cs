@@ -43,7 +43,11 @@ public class Cassandra : MonoBehaviour
         while(true)
         {
             yield return new WaitWhile( () => agent.pathPending );
-            yield return new WaitUntil( () => agent.remainingDistance <= wanderDestinationCuttoff );
+            yield return new WaitUntil( () => 
+                agent.enabled
+                ? agent.remainingDistance <= wanderDestinationCuttoff 
+                : false
+            );
 
             Debug.Log($"{this.gameObject.name}.Cassandra.PathReset: Path Complete. Restarting wander...");
 
