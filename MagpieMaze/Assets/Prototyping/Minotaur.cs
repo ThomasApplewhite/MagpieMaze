@@ -20,6 +20,9 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Collider))]
 public class Minotaur : MonoBehaviour
 {
+    [Tooltip("How close The Minotaur needs to be to its destination before it looks for a new one")]
+    public float wanderDestinationCuttoff = 1f;
+
     //The Minotaur's NavMeshAgent component
     private NavMeshAgent agent;
 
@@ -36,12 +39,90 @@ public class Minotaur : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         OnPlayerContact = KillPlayer;
+
+        StartCoroutine(TrackPlayer());
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    /*void FixedUpdate()
     {
         if(agent.enabled) agent.SetDestination(player.transform.position);
+    }*/
+
+    /*Track to the player's position, but only update the destination continuously if the player
+    can be seen. Ideally, such distances will be short, and thus expensive path calculations
+    can be avoided.*/
+    IEnumerator TrackPlayer()
+    {
+        RaycastHit raycastHit;
+
+        while(true)
+        {
+            //Step 1: Grab the player's position
+            do
+            {
+                Debug.Log($"Minotaur.TrackPlayer: Calculating new path. Previous Path was {agent.pathStatus}");
+
+                agent.SetDestination(player.transform.position);
+                
+                yield return new WaitWhile(() => agent.pathPending);
+            }
+            while(agent.pathStatus != NavMeshPathStatus.PathComplete);
+        
+            Debug.Log($"Minotaur.TrackPlayer: Beginning Pursuit. Path is {agent.pathStatus}");
+
+            //Step 2: Go to that spot (not necessarily the player).
+            //This happens automatically
+
+            //Step 3: while still travelling...
+            while (agent.remainingDistance > wanderDestinationCuttoff)
+            {
+                //Check if the player can be seen by raycasting in their direction
+                Physics.Raycast(
+                    this.gameObject.transform.position,
+                    player.transform.position - this.gameObject.transform.position,
+                    out raycastHit
+                );
+
+                //If the first thing hit by that raycast is the player...
+                if (raycastHit.transform.gameObject == player)
+                {
+                    Debug.Log("Minotaur.TrackPlayer: Player Detected");
+                    yield return ChargePlayer();
+                }
+                //if it isn't...
+                else
+                {
+                    //keep going, I guess
+                    Debug.Log("Minotaur.TrackPlayer: Player not Detected");
+                    yield return null;
+                }
+            }
+        }
+    }
+
+    //walk directly to the player every frame
+    IEnumerator ChargePlayer()
+    {
+        RaycastHit raycastHit;
+
+        do
+        {
+            yield return null;
+
+            //Set the player as the destination
+            //this should be fine as long as the player is nearby
+            agent.SetDestination(player.transform.position);
+
+            //Check if the player can be seen by raycasting in their direction
+            Physics.Raycast(
+                this.gameObject.transform.position,
+                player.transform.position - this.gameObject.transform.position,
+                out raycastHit
+            );
+        }
+        //repeat this process as long as the player is visible
+        while(raycastHit.transform.gameObject == player);
     }
 
     void OnCollisionEnter(Collision collided)
