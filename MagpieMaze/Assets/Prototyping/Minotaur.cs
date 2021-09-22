@@ -52,6 +52,28 @@ public class Minotaur : MonoBehaviour
     /*Track to the player's position, but only update the destination continuously if the player
     can be seen. Ideally, such distances will be short, and thus expensive path calculations
     can be avoided.*/
+    IEnumerator SearchPlayer()
+    {
+        while(true)
+        {
+            Debug.Log("Minotaur.TrackPlayer: calculating new path...");
+            do
+            {
+                //Grab the player's position and make a path
+                agent.SetDestination(player.transform.position);
+                yield return new WaitWhile(() => agent.pathPending);
+            }
+            //Keep trying until the path gets made
+            while(agent.pathStatus != NavMeshPathStatus.PathComplete);
+            
+            
+            Debug.Log("Minotaur.TrackPlayer: travelling path");
+            //then go to it
+            yield return new WaitWhile( () => agent.remainingDistance > wanderDestinationCuttoff );
+
+        }
+    }
+
     IEnumerator TrackPlayer()
     {
         RaycastHit raycastHit;
@@ -59,17 +81,17 @@ public class Minotaur : MonoBehaviour
         while(true)
         {
             //Step 1: Grab the player's position
+            Debug.Log("Minotaur.TrackPlayer: calculating new path...");
             do
             {
-                Debug.Log($"Minotaur.TrackPlayer: Calculating new path. Previous Path was {agent.pathStatus}");
 
                 agent.SetDestination(player.transform.position);
                 
                 yield return new WaitWhile(() => agent.pathPending);
             }
             while(agent.pathStatus != NavMeshPathStatus.PathComplete);
-        
-            Debug.Log($"Minotaur.TrackPlayer: Beginning Pursuit. Path is {agent.pathStatus}");
+
+            Debug.Log("Minotaur.TrackPlayer: travelling path");
 
             //Step 2: Go to that spot (not necessarily the player).
             //This happens automatically
@@ -94,7 +116,6 @@ public class Minotaur : MonoBehaviour
                 else
                 {
                     //keep going, I guess
-                    Debug.Log("Minotaur.TrackPlayer: Player not Detected");
                     yield return null;
                 }
             }

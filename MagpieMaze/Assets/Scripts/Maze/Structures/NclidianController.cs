@@ -18,9 +18,9 @@ public class NclidianController : MonoBehaviour
 {
     public enum ReplacementState
     {
-        DIRECT,
-        RANDOM,
-        OPEN
+        DIRECT, //Copy Replacee's neighbors
+        RANDOM, //Have Random neighbors
+        OPEN    //Become neighbors on every side except the portal side
     };
 
     public GameObject PortalA;

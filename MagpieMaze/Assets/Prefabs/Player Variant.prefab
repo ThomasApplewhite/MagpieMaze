@@ -30,6 +30,18 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!114 &5759076047547351362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217749387783166846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24149a99828df181885544a82bc2580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &9123699510191187048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,18 +69,6 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
---- !u!114 &5759076047547351362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1217749387783166846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f24149a99828df181885544a82bc2580, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &886489584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +211,10 @@ PrefabInstance:
     - target: {fileID: 1921746335030134776, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911708185876221789, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
+      propertyPath: mouseSensitivity
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7665427741718626423, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}

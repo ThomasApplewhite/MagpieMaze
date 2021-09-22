@@ -331,7 +331,9 @@ public class MazeGenerator
         //And make the portals idk it's not rocket science
         Uobj.Instantiate(nclidian).GetComponent<NclidianController>().PlacePortals(
             new MazeNeighbors(a, maze),
-            new MazeNeighbors(b, maze)
+            new MazeNeighbors(b, maze),
+            NclidianController.ReplacementState.DIRECT,
+            NclidianController.ReplacementState.DIRECT
         );
     }
 
