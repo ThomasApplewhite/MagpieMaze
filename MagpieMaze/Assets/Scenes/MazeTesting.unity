@@ -2270,6 +2270,10 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PlayerCharacter, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 6504259454954363803, guid: a034eb095d57e7038a8aaf3d4ff67496, type: 3}
+      propertyPath: mouseSensitivity
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a034eb095d57e7038a8aaf3d4ff67496, type: 3}
 --- !u!1001 &6567771014917508981

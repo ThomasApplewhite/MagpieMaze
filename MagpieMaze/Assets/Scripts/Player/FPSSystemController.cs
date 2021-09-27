@@ -128,8 +128,8 @@ public class FPSSystemController : PortalTraveller {
         smoothPitch = Mathf.SmoothDampAngle (smoothPitch, pitch, ref pitchSmoothV, rotationSmoothTime);
         smoothYaw = Mathf.SmoothDampAngle (smoothYaw, yaw, ref yawSmoothV, rotationSmoothTime);
 
-        transform.eulerAngles = Vector3.up * smoothYaw;
-        cam.transform.localEulerAngles = Vector3.right * smoothPitch;
+        //transform.eulerAngles = Vector3.up * smoothYaw;
+        //cam.transform.localEulerAngles = Vector3.right * smoothPitch;
 
     }
 
@@ -141,6 +141,26 @@ public class FPSSystemController : PortalTraveller {
     public void UpdateLookInputs(InputAction.CallbackContext context)
     {
         lookInputs = context.ReadValue<Vector2>();
+
+        float mX = lookInputs.x;
+        float mY = lookInputs.y;
+
+        yaw += mX * mouseSensitivity;
+        pitch -= mY * mouseSensitivity;
+        pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
+        smoothPitch = Mathf.SmoothDampAngle(smoothPitch, pitch, ref pitchSmoothV, rotationSmoothTime);
+        smoothYaw = Mathf.SmoothDampAngle(smoothYaw, yaw, ref yawSmoothV, rotationSmoothTime);
+
+        if(this.enabled)
+        {
+            transform.eulerAngles = Vector3.up * smoothYaw;
+            cam.transform.localEulerAngles = Vector3.right * smoothPitch;
+        }
+        
+
+        //transform.eulerAngles += new Vector3(0f, lookInputs.x, 0f); //left-right yaw
+        //cam.transform.localEulerAngles += new Vector3(-lookInputs.y * mouseSensitivity, 0f, 0f); // up-down pitch
+
     }
 
     public void Jump()
