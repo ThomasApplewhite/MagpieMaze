@@ -22,6 +22,9 @@ public class PlayerCharacter : MonoBehaviour
     [Tooltip("The particle system to emiy footsteps from")]
     public ParticleSystem footstepSystem;
 
+    [Tooltip("The pause menu to bring up when the game is paused")]
+    public PauseMenu pauseMenu;
+
     [Tooltip("How long to delay footsteps for (bigger value = fewer footsteps")]
     public int footstepDelay = 10;
 
@@ -70,5 +73,12 @@ public class PlayerCharacter : MonoBehaviour
     {
         Debug.Log("Player is dead!");
         this.gameObject.transform.position = killLocation.position;
+    }
+
+    public void Pause()
+    {
+        //GameObject.FindWithTag("PauseMenu").GetComponent<PauseMenu>().TogglePause();
+        Debug.Log("PlayerCharacter.Pause: pausing game");
+        pauseMenu.TogglePause();
     }
 }

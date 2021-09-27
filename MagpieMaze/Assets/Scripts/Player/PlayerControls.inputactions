@@ -55,7 +55,7 @@
                 },
                 {
                     "name": "Menu",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "a4887826-1ba0-4174-b45e-eeff1b96513e",
                     "expectedControlType": "Button",
                     "processors": "",

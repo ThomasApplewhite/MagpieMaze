@@ -84,10 +84,10 @@ public class Minotaur : MonoBehaviour
             Debug.Log("Minotaur.TrackPlayer: calculating new path...");
             do
             {
-
+                yield return new WaitUntil( () => agent.enabled );
                 agent.SetDestination(player.transform.position);
                 
-                yield return new WaitWhile(() => agent.pathPending);
+                yield return new WaitWhile( () => agent.pathPending );
             }
             while(agent.pathStatus != NavMeshPathStatus.PathComplete);
 
@@ -97,7 +97,7 @@ public class Minotaur : MonoBehaviour
             //This happens automatically
 
             //Step 3: while still travelling...
-            while (agent.remainingDistance > wanderDestinationCuttoff)
+            while (!agent.enabled || agent.remainingDistance > wanderDestinationCuttoff)
             {
                 //Check if the player can be seen by raycasting in their direction
                 Physics.Raycast(

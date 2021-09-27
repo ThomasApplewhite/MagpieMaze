@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - DialogueRunner
+  - PauseMenu
   layers:
   - Default
   - TransparentFX
