@@ -15,9 +15,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Animations;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Animator))]
 public class Minotaur : MonoBehaviour
 {
     [Tooltip("How close The Minotaur needs to be to its destination before it looks for a new one")]
@@ -25,6 +27,9 @@ public class Minotaur : MonoBehaviour
 
     //The Minotaur's NavMeshAgent component
     private NavMeshAgent agent;
+
+    //The Minotaur's Animator component
+    private Animator anims;
 
     //A reference to the player, for ease
     private GameObject player;
@@ -36,6 +41,7 @@ public class Minotaur : MonoBehaviour
     void Start()
     {
         agent = this.gameObject.GetComponent<NavMeshAgent>();
+        anims = this.gameObject.GetComponent<Animator>();
         player = GameObject.FindWithTag("Player");
 
         OnPlayerContact = KillPlayer;
@@ -43,11 +49,11 @@ public class Minotaur : MonoBehaviour
         StartCoroutine(TrackPlayer());
     }
 
-    // Update is called once per frame
-    /*void FixedUpdate()
+    // FixedUpdate is called every physics tick, regardless of framerate
+    void FixedUpdate()
     {
-        if(agent.enabled) agent.SetDestination(player.transform.position);
-    }*/
+        anims.SetFloat("m_velocity", agent.velocity.magnitude);
+    }
 
     /*Track to the player's position, but only update the destination continuously if the player
     can be seen. Ideally, such distances will be short, and thus expensive path calculations
@@ -134,6 +140,9 @@ public class Minotaur : MonoBehaviour
             //Set the player as the destination
             //this should be fine as long as the player is nearby
             agent.SetDestination(player.transform.position);
+
+            //Got to that spot
+            yield return new WaitUntil( () => !agent.enabled || agent.remainingDistance <= wanderDestinationCuttoff );
 
             //Check if the player can be seen by raycasting in their direction
             Physics.Raycast(
