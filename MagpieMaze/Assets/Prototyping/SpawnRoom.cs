@@ -67,8 +67,8 @@ public class SpawnRoom : MonoBehaviour
         Instantiate(Nclidian).GetComponent<NclidianController>().PlacePortals(
             new MazeNeighbors(a, mazeProper),
             new MazeNeighbors(b, hallway),
-            NclidianController.ReplacementState.OPEN,
-            NclidianController.ReplacementState.DIRECT
+            PortalReplacer.ReplacementState.OPEN,
+            PortalReplacer.ReplacementState.DIRECT
         );
 
         Debug.Log($"Teleporting player to {hallway.GetCell(0, 0).anchorCoord}");

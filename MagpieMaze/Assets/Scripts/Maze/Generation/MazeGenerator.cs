@@ -332,8 +332,8 @@ public class MazeGenerator
         Uobj.Instantiate(nclidian).GetComponent<NclidianController>().PlacePortals(
             new MazeNeighbors(a, maze),
             new MazeNeighbors(b, maze),
-            NclidianController.ReplacementState.DIRECT,
-            NclidianController.ReplacementState.DIRECT
+            PortalReplacer.ReplacementState.DIRECT,
+            PortalReplacer.ReplacementState.DIRECT
         );
     }
 

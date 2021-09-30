@@ -16,13 +16,6 @@ using UnityEngine;
 
 public class NclidianController : MonoBehaviour
 {
-    public enum ReplacementState
-    {
-        DIRECT, //Copy Replacee's neighbors
-        RANDOM, //Have Random neighbors
-        OPEN    //Become neighbors on every side except the portal side
-    };
-
     public GameObject PortalA;
     public GameObject PortalB;
 
@@ -44,15 +37,16 @@ public class NclidianController : MonoBehaviour
     {
         placementMethods = new System.Action<GameObject, MazeNeighbors>[] 
         {
-            (portal, region) => DirectPortalReplacement(portal, region),
-            (portal, region) => RandomPortalReplacement(portal, region),
-            (portal, region) => OpenPortalReplacement(portal, region),
+            (portal, region) => PortalReplacer.DirectPortalReplacement(portal, region),
+            (portal, region) => PortalReplacer.RandomPortalReplacement(portal, region),
+            (portal, region) => PortalReplacer.OpenPortalReplacement(portal, region),
         };
     }
 
     //Replaces alphaCell and betaCell with portalA and portalB, respectively
-    public void PlacePortals(MazeNeighbors alphaRegion, MazeNeighbors betaRegion, 
-        ReplacementState alphaState=ReplacementState.RANDOM, ReplacementState betaState=ReplacementState.RANDOM)
+    public void PlacePortals(MazeNeighbors alphaRegion, MazeNeighbors betaRegion,
+        PortalReplacer.ReplacementState alphaState=PortalReplacer.ReplacementState.RANDOM,
+        PortalReplacer.ReplacementState betaState=PortalReplacer.ReplacementState.RANDOM)
     {
         /*if(alphaState == ReplacementState.DIRECT) DirectPortalReplacement(PortalA, alphaRegion);
         else RandomPortalReplacement(PortalA, alphaRegion);
@@ -67,72 +61,5 @@ public class NclidianController : MonoBehaviour
         GameObject.FindWithTag("Player").BroadcastMessage("UpdatePortalArray");
 
         Destroy(this.gameObject);
-    }
-
-    //Places the portal and copies the replacee's connections
-    void DirectPortalReplacement(GameObject portal, MazeNeighbors region)
-    {
-        //deparent the portal and do the replacement
-        var portalCell = TransformReplace(portal, region);
-
-        //Then assume all of the replaced cell's connections
-        portalCell.CopyConnections(region.Owner);
-
-        //Then align the portal with at least one of them
-        portalCell.AlignPortalWithAnyConnection();
-    }
-
-    //Places the portal and makes random connections
-    void RandomPortalReplacement(GameObject portal, MazeNeighbors region)
-    {
-        //First, disconnect all of the original cell's neighbors
-        region.Owner.DisconnectAll();
-
-        //deparent the portal and do the replacement
-        var portalCell = TransformReplace(portal, region);
-
-        //Then the replaced cell's north neighbor (and potentially others)
-        //to the cell
-        portalCell.Connect(region.North);
-
-        //Now connect a random wall that isn't the northern wall
-        //This UnityEngine statement generates a random int: 0, 1, or 2
-        switch (UnityEngine.Random.Range(0, 3))
-        {
-            case 0:
-                portalCell.Connect(region.West);
-                break;
-
-            case 1:
-                portalCell.Connect(region.East);
-                break;
-
-            default: //fires on anything other than 0 or 1
-                portalCell.Connect(region.South);
-                break;
-        }
-    }
-
-    //Places the portal and connects everything but the direction the portal is facing
-    void OpenPortalReplacement(GameObject portal, MazeNeighbors region)
-    {
-        //deparent the portal and do the replacement
-        var portalCell = TransformReplace(portal, region);
-
-        //Then connect to every side
-        portalCell.Connect(region.North);
-        portalCell.Connect(region.South);
-        portalCell.Connect(region.East);
-        portalCell.Connect(region.West);
-    }
-
-    //Does universal setup with the transform of the portals
-    PortalReplacer TransformReplace(GameObject portal, MazeNeighbors region)
-    {
-        var portalCell = portal.GetComponent<PortalReplacer>();
-        portal.transform.parent = region.Owner.gameObject.transform.parent;
-        portalCell.Initialize(region.Owner);
-
-        return portalCell;
     }
 }
