@@ -1665,8 +1665,12 @@ MonoBehaviour:
     mazeGenStepSize: 10
     generateMinotaur: 1
     generateCassandra: 1
+    generatedVaults:
+    - {fileID: 6696341836128805213, guid: 04f6f71344f8e0e249efb7b882484e7f, type: 3}
     minotaurSpawn: {x: 0, y: 0}
     cassandraSpawn: {x: 3, y: 3}
+    vaultLevel: -100
+    vaultSpacing: 50
     mazeCell: {fileID: 2805008745139986505, guid: 749b26e20b5ee7679b32ec872a53c88e, type: 3}
     mazeFloor: {fileID: 6867183488404060253, guid: 7d05b98ef87187b78b6593e629de4ac6, type: 3}
     minotaur: {fileID: 6798550303779021913, guid: 2153f3c364a4ba336bdbc3da3a6ba9d0, type: 3}
@@ -1744,8 +1748,11 @@ MonoBehaviour:
     mazeGenStepSize: 10
     generateMinotaur: 0
     generateCassandra: 0
+    generatedVaults: []
     minotaurSpawn: {x: 6, y: 6}
     cassandraSpawn: {x: 3, y: 3}
+    vaultLevel: -100
+    vaultSpacing: 50
     mazeCell: {fileID: 2805008745139986505, guid: 749b26e20b5ee7679b32ec872a53c88e, type: 3}
     mazeFloor: {fileID: 6867183488404060253, guid: 7d05b98ef87187b78b6593e629de4ac6, type: 3}
     minotaur: {fileID: 0}

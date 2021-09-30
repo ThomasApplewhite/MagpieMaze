@@ -20,7 +20,7 @@ using UnityEngine.Events;
 //alias to avoid name clash with object (the inherent C# type)
 using Uobj = UnityEngine.Object;
 
-[System.Serializable]
+[Serializable]
 public class MazeGenerator
 {
     [Header("Generation Parameters")]
@@ -42,12 +42,21 @@ public class MazeGenerator
     [Tooltip("Whether or not this maze should have a Cassandra")]
     public bool generateCassandra = false;
 
+    [Tooltip("The Vaults that should generate in this maze, if any")]
+    public GameObject[] generatedVaults;
+
     [Header("Spawn Parameters")]
     [Tooltip("The location of the Minotaur's spawn point")]
     public Vector2Int minotaurSpawn = new Vector2Int(6, 6);
 
     [Tooltip("The location of Cassandra's spawn point")]
     public Vector2Int cassandraSpawn = new Vector2Int(3, 3);
+
+    [Tooltip("The Y Level at which vaults will be generated (to ensure vaults to instantiate inside anything")]
+    public float vaultLevel = -100f;
+
+    [Tooltip("How far apart each vault should be on the X axis")]
+    public float vaultSpacing = 50f;
 
     [Header("Prefab Parameters")]
     [Tooltip("The prefab of a Maze Cell")]
@@ -84,8 +93,8 @@ public class MazeGenerator
     //The random number generator, for random number things
     private System.Random rnd;
     
-
-    // Start is called before the first frame update
+    //Provided as a coroutine to allow the generation to be performed over
+    //multiple in-game frames.
     public IEnumerator Generate(Maze mazeToGenerate)
     {
         activeMaze = mazeToGenerate;
@@ -127,6 +136,7 @@ public class MazeGenerator
 
         if (generateMinotaur) SpawnMinotaur();
         if (generateCassandra) SpawnCassandra();
+        if (generatedVaults.Length > 0) SpawnVaults();
 
         yield return null;
     }
@@ -335,6 +345,18 @@ public class MazeGenerator
             PortalReplacer.ReplacementState.DIRECT,
             PortalReplacer.ReplacementState.DIRECT
         );
+    }
+
+    void SpawnVaults()
+    {
+        for (int j = 0; j < generatedVaults.Length; ++j)
+        {
+            Uobj.Instantiate(
+                generatedVaults[j],
+                new Vector3(j * vaultSpacing, vaultLevel, 0f),
+                Quaternion.identity
+            ).GetComponent<VaultController>().IntegrateVault(activeMaze);
+        }
     }
 
     //These two methods are were left over from room replacer testing. They might get reused.
