@@ -50,7 +50,7 @@ public class VaultController : MonoBehaviour
         foreach(PortalReplacer portal in nclidians)
         {
             var destCell = maze.GetRandomCellWithPadding(2);
-            PortalReplacer.DirectPortalReplacement(portal.gameObject, new MazeNeighbors(destCell, maze));
+            PortalReplacer.OpenPortalReplacement(portal.gameObject, new MazeNeighbors(destCell, maze));
             endScale = portal.gameObject.transform.localScale;
         }
 

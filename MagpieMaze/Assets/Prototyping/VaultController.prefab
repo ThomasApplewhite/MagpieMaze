@@ -913,20 +913,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6088068385645072995, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
+      propertyPath: m_LocalPosition.y
+      value: -0.33
       objectReference: {fileID: 0}
     - target: {fileID: 6088068385645072995, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
-      propertyPath: m_LocalRotation.y
+      propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6088068385645072995, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088068385645072995, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7249256066727699476, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7249256067148179872, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
       propertyPath: m_RootOrder
@@ -1055,7 +1059,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249256067148179878, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
       propertyPath: m_Name
-      value: NclidianCell (1)
+      value: VaultNclidianCell
       objectReference: {fileID: 0}
     - target: {fileID: 7256622483539242832, guid: 90b80bf48e217d973bbe0f249a0ec51e, type: 3}
       propertyPath: linkedPortal
