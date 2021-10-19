@@ -25,6 +25,9 @@ public class Minotaur : MonoBehaviour
     [Tooltip("How close The Minotaur needs to be to its destination before it looks for a new one")]
     public float wanderDestinationCuttoff = 1f;
 
+    [Tooltip("How close The Minotaur needs to be to the player before trying to charge them again")]
+    public float attackDestinationCuttoff = 0.25f;
+
     //The Minotaur's NavMeshAgent component
     private NavMeshAgent agent;
 
@@ -137,6 +140,9 @@ public class Minotaur : MonoBehaviour
         {
             yield return null;
 
+            //wait until navAgent is ready to get a path
+            yield return new WaitUntil( () => agent.enabled );
+
             //Set the player as the destination
             //this should be fine as long as the player is nearby
             agent.SetDestination(player.transform.position);
@@ -165,6 +171,6 @@ public class Minotaur : MonoBehaviour
 
     void KillPlayer(GameObject player)
     {
-        player.SendMessage("Kill");
+        player.SendMessage("Kill", this.gameObject);
     }
 }
