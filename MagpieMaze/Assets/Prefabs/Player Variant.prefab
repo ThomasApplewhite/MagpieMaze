@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   killLocation: {fileID: 0}
   footstepSystem: {fileID: 0}
+  pauseMenu: {fileID: 0}
   footstepDelay: 100
 --- !u!114 &2929384514090300872
 MonoBehaviour:
@@ -155,6 +156,22 @@ PrefabInstance:
     - target: {fileID: 1535381020191089681, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535381020191089686, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535381020191089686, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535381020191089686, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535381020191089686, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1921746335030134776, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
       propertyPath: m_Camera
