@@ -119,7 +119,9 @@ public class Minotaur : MonoBehaviour
                 if (raycastHit.transform.gameObject == player)
                 {
                     Debug.Log("Minotaur.TrackPlayer: Player Detected");
-                    yield return ChargePlayer();
+                    //yield return ChargePlayer();
+                    //keep going, I guess
+                    yield return null;
                 }
                 //if it isn't...
                 else

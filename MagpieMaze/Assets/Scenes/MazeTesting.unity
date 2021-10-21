@@ -2214,6 +2214,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1006745038}
     - target: {fileID: 923979533, guid: a034eb095d57e7038a8aaf3d4ff67496, type: 3}
+      propertyPath: deathSceneName
+      value: DeathScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 923979533, guid: a034eb095d57e7038a8aaf3d4ff67496, type: 3}
       propertyPath: footstepSystem
       value: 
       objectReference: {fileID: 1672159149}

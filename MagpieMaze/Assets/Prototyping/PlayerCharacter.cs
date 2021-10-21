@@ -17,7 +17,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    [Tooltip("The particle system to emiy footsteps from")]
+    [Tooltip("The particle system to emit footsteps from")]
     public ParticleSystem footstepSystem;
 
     [Tooltip("The pause menu to bring up when the game is paused")]
@@ -103,7 +103,7 @@ public class PlayerCharacter : MonoBehaviour
     IEnumerator TimeKill(GameObject killer)
     {
         //Step 1: Rotate the player towards the killer, and vice-versa.
-        yield return LerpToCenterDialogue(killer.transform, GameObject.FindWithTag("MainCamera").transform);
+        yield return LerpToGameObjectTop(killer, GameObject.FindWithTag("MainCamera").transform);
 
         //Step 2: wait for just a bit so the two friends can stare at each other
         yield return new WaitForSeconds(staredownTime);
@@ -112,36 +112,39 @@ public class PlayerCharacter : MonoBehaviour
         SceneManager.LoadScene(deathSceneName);
     }
 
-    /*This is an almost exact copy of DialogueInitiator.LerpToCenterDialgoue. I know repetition
-    is cringe, but I can think of a centeral utility class to stuff this in and the DialogueInitiator
-    and the player are totally unrealated, so.. yeah.*/
-
-    //Rotates the UI and player camera towards each other
-    IEnumerator LerpToCenterDialogue(Transform ui, Transform playerCamera)
+    /*This is borrowed from DialogueInitiator.LerpToCenterDialgoue. Rotates the player's camera to the top
+    of a gameObject, or to the gameObject's position if it doesn't have a mesh renderer*/
+    IEnumerator LerpToGameObjectTop(GameObject obj, Transform playerCamera)
     {
-        //Calculate the direction from the camera to the UI, which is
-        //the two-argument arctangent of the point (UI.y - cam.y, UI.x - cam.y)
-        /*Vector3 camToUI = System.Math.Atan2
-        (
-            ui.position.y - playerCamera.position.y,
-            ui.position.x - playerCamera.position.x
-        );*/
-        //Or is it the difference of the destination minus the source?
-        Vector3 camToUI = ui.position - playerCamera.position;
-        //Invert that vector to get the direction from the UI to the camera
-        Vector3 uiToCam = -camToUI;
+        //Calculate the position of obj's top (or obj's position,
+        //if it doesn't have a mesh renderer)
+        MeshRenderer objMesh;
+        Vector3 trueObjTop;
 
-        //Save the initial forward vectors of both transforms
+        if(obj.TryGetComponent<MeshRenderer>(out objMesh))
+        {
+            trueObjTop = obj.transform.position + new Vector3(0f, objMesh.bounds.size.y, 0f);
+        }
+        else
+        {
+            objMesh = obj.GetComponentInChildren<MeshRenderer>();
+            trueObjTop = objMesh != null 
+            ? obj.transform.position + new Vector3(0f, objMesh.bounds.size.y, 0f)
+            : obj.transform.position;
+        }
+
+        //Calculate the direction from the camera to obj
+        Vector3 camToObj = trueObjTop - playerCamera.position;
+
+        //Save the initial forward vectors of the cam transform
         Vector3 camForward = playerCamera.forward;
-        Vector3 uiForward = ui.forward;
 
         //While the maximum initialization time hasn't passed...
         var timePassed = 0f;
         while (timePassed < initiateTime)
         {
-            //Lerp the forward vectors of both transforms towards their ideal facing directions
-            playerCamera.forward = Vector3.Lerp(camForward, camToUI, timePassed / initiateTime);
-            ui.forward = Vector3.Lerp(uiForward, uiToCam, timePassed / initiateTime);
+            //Lerp the forward vector of both the camera transform towards its ideal facing directions
+            playerCamera.forward = Vector3.Lerp(camForward, camToObj, timePassed / initiateTime);
 
             //Let this tiny movement of both items happen
             yield return null;
@@ -151,7 +154,6 @@ public class PlayerCharacter : MonoBehaviour
         }
 
         //force the rotations the file step of the way, just in case
-        playerCamera.forward = camToUI;
-        ui.forward = uiToCam;
+        playerCamera.forward = camToObj;
     }
 }
