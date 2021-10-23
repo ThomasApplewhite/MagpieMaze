@@ -119,9 +119,7 @@ public class Minotaur : MonoBehaviour
                 if (raycastHit.transform.gameObject == player)
                 {
                     Debug.Log("Minotaur.TrackPlayer: Player Detected");
-                    //yield return ChargePlayer();
-                    //keep going, I guess
-                    yield return null;
+                    yield return ChargePlayer();
                 }
                 //if it isn't...
                 else
@@ -149,7 +147,7 @@ public class Minotaur : MonoBehaviour
             //this should be fine as long as the player is nearby
             agent.SetDestination(player.transform.position);
 
-            //Got to that spot
+            //Go to that spot
             yield return new WaitUntil( () => !agent.enabled || agent.remainingDistance <= wanderDestinationCuttoff );
 
             //Check if the player can be seen by raycasting in their direction
