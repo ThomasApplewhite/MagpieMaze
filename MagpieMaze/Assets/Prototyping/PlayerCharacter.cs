@@ -134,7 +134,15 @@ public class PlayerCharacter : MonoBehaviour
         }
 
         //Calculate the direction from the camera to obj
-        Vector3 camToObj = trueObjTop - playerCamera.position;
+        Vector3 camToObj = (trueObjTop - playerCamera.position).normalized;
+
+        /*BUT LOOK THE OPPISITE DIRECTION
+        This is specifically for the minotaur, whose position is in the floor
+        Because we want the player to look up
+        By reflecting the vector across the plane normal'd by the player's up vector,
+        we can get the other direction to look!*/
+        camToObj = Vector3.Reflect(camToObj, this.gameObject.transform.up);
+        
 
         //Save the initial forward vectors of the cam transform
         Vector3 camForward = playerCamera.forward;

@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wanderDestinationCuttoff: 1
+  attackDestinationCuttoff: 0.25
 --- !u!114 &7878138240901447212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wanderDestinationCuttoff: 1
+  attackDestinationCuttoff: 0.25
 --- !u!114 &1107676478712935244
 MonoBehaviour:
   m_ObjectHideFlags: 0
