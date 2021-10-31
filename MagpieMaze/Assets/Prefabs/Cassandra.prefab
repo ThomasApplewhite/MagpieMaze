@@ -252,6 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterDialogue: {fileID: 2480198943629176163, guid: d549ec77f257ad9f8a547975dd3b04f4, type: 3}
   startingNode: Start
+  speakerTransform: {fileID: 8937777460902016141}
   initiateTime: 0.5
 --- !u!114 &8937777460902016140
 MonoBehaviour:

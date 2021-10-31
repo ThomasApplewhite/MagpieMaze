@@ -26,6 +26,9 @@ public class DialogueInitiator : MonoBehaviour
     [Tooltip("The starting node for this character")]
     public string startingNode = "Start";
 
+    [Tooltip("The transform to rotate towards the player (and that the player will rotate towards)")]
+    public Transform speakerTransform;
+
     [Header("Other Settings")]
     //[Tooltip("The canvas to display dialogue text on for this character")]
     //Normally this would be pulled directly via GetComponentInChildren, but that method can only find
@@ -68,8 +71,9 @@ public class DialogueInitiator : MonoBehaviour
         //locate the dialogueRunner
         if(GameObject.FindWithTag("DialogueRunner")?.TryGetComponent<DialogueRunner>(out dialogueRunner) == true)
         {
+            //Move to dialogue start to avoid loading conflicts
             //add this character's dialogue to the runner's programs
-            dialogueRunner.Add(characterDialogue);
+            //dialogueRunner.Add(characterDialogue);
         }
         else
         {
@@ -119,10 +123,10 @@ public class DialogueInitiator : MonoBehaviour
         //Step 2: Lerp the player's camera towards the current speaker
         //and
         //Step 3: Lerp the UI towards the camera
-        StartCoroutine(LerpToCenterDialogue(this.gameObject.transform, playerCamera.transform));
+        StartCoroutine(LerpToCenterDialogue(speakerTransform, playerCamera.transform));
 
-        //Step 4: Set the approprite speaker UI
-        //dialogueRunner.dialogueUI = dialogueUI;
+        //Step 4: Load the approprite dialogue
+        dialogueRunner.Add(characterDialogue);
 
         //Step 5: Start the dialogue for real
         dialogueRunner.StartDialogue(startingNode);
@@ -179,5 +183,8 @@ public class DialogueInitiator : MonoBehaviour
 
         //Step 2: Restore the rotation of the speaker
         this.gameObject.transform.forward = originalForward;
+
+        //Step 3: Unload the dialogue
+        dialogueRunner.Clear();
     }
 }
